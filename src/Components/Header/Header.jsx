@@ -11,9 +11,9 @@ export default function Header() {
   // const [val, setval] = useState('');
   // const [err, seterr] = useState('');
 
-  const isTablet = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
+  // const isTablet = useMediaQuery({
+  //   query: "(max-width: 768px)",
+  // });
   const isMobile = useMediaQuery({
     query: "(max-width: 480px)",
   });
