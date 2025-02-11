@@ -1,0 +1,50 @@
+:root {
+    --primary-color: 44 4 116;
+    --secondary-color: 252 91 4;
+}
+
+#loader.mounted {
+    display: none;
+}
+
+#loader {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.cb {
+    width: 15px;
+    height: 15px;
+    background: rgb(var(--primary-color));
+}
+
+#loader .cb:nth-of-type(1) {
+    animation: jump .8s infinite;
+}
+
+#loader .cb:nth-of-type(2) {
+    animation: jump .8s .1s infinite;
+}
+
+#loader .cb:nth-of-type(3) {
+    animation: jump .8s .2s infinite;
+}
+
+@keyframes jump {
+    0%, 100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(25px);
+        opacity: .3;
+    }
+}

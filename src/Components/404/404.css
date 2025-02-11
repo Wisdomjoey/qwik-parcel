@@ -1,0 +1,28 @@
+.h404 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    border: 1px solid rgb(var(--primary-color));
+    background: #dae7ff;
+    gap: .1rem;
+    padding: 1rem;
+    margin: 2rem 0 0 2rem;
+}
+
+.h404 h3, .h404 h2 {
+    color: rgb(var(--primary-color));
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-size: 30px;
+}
+
+.h404 p {
+    text-decoration: underline;
+    color: rgb(255, 82, 82);
+    font-size: 13px;
+}

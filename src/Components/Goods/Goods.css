@@ -1,0 +1,35 @@
+.goods {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10rem 0;
+    flex: 1;
+}
+
+.goods h1 {
+    font-size: 35px;
+    color: rgb(var(--secondary-color));
+    margin-bottom: 3rem;
+}
+
+.goods h1 span {
+    color: rgb(var(--primary-color));
+}
+
+.goods cite {
+    color: rgb(var(--primary-color));
+    font-family: Poppins-Bold;
+    margin-top: 0.5rem;
+}
+
+.swiper__con {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 2rem;
+    flex-direction: column;
+}

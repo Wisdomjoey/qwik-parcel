@@ -1,0 +1,140 @@
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5rem 0;
+}
+
+.services > h1 {
+    font-size: 35px;
+    color: rgb(var(--secondary-color));
+    margin-bottom: 5rem;
+}
+
+.services > h1 span {
+    color: rgb(var(--primary-color));
+}
+
+.services__bg {
+    width: 100%;
+    height: 90vh;
+    background-image: url(../../images/services-bg-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services__sx {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.service__card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    border: 1px solid rgb(255, 255, 255, .5);
+    position: relative;
+    cursor: pointer;
+}
+
+.services__card {
+    width: 330px;
+    height: 330px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+    padding: 1rem;
+}
+
+.service__card:hover {
+    background: rgb(var(--primary-color) / 50%);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 2rem;
+    width: 100%;
+    height: 100%;
+    gap: 2.5rem;
+}
+
+.content__sx {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    text-align: center;
+}
+
+.content > h1 {
+    color: #fff;
+    font-size: 28px;
+    width: 80%;
+}
+
+.content__sx > h1 {
+    font-size: 23px;
+    color: rgb(var(--secondary-color));
+}
+
+.para {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: all 1s;
+}
+
+.para > p {
+    color: lightgrey;
+    font-size: 14px;
+}
+
+.para__sx > p {
+    color: dimgrey;
+    font-size: 13px;
+}
+
+.service__card:hover .para {
+    height: 300px;
+}
+
+.arrow__con {
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+.arrow {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid lightgray; */
+    position: absolute;
+    right: 0;
+    background: rgb(var(--primary-color));
+    padding: 0 .7rem;
+    transition: all 1s;
+}
+
+.service__card:hover .arrow {
+    width: 100%;
+}
+/* wa.me/09132312725 */

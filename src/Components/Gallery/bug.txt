@@ -1,0 +1,45 @@
+{ fullScr && (
+    <div className="gallery__e">
+
+        <Swiper
+            slidesPerView={ 1 }
+            // effect={ 'fade' }
+            modules={[
+                Pagination,
+                Navigation,
+                // EffectFade
+            ]}
+            pagination={{
+                clickable: true
+            }}
+            // loop={ true }
+            navigation={ true }
+        >
+
+            { itemData.map((item, ind) => {
+                return (
+                    <SwiperSlide key={ ind }>
+
+                        <div
+                            className="gal__img"
+                            style={{
+                                backgroundImage: `url(${ item.img })`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'contain',
+                                backgroundRepeat: 'no-repeat'
+                            }}
+                        ></div>
+
+                    </SwiperSlide>
+                )
+            }) }
+
+        </Swiper>
+        <div className="close__btn" /*onClick={ setFullScr(false) }*/>
+
+            <CloseFullscreen />
+
+        </div>
+
+    </div>
+) }
