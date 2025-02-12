@@ -179,7 +179,7 @@
 .boxnav {
     height: 50px;
     width: 170px;
-    background-color: #1976D2;
+    background-color: rgb(var(--secondary-color));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -395,7 +395,7 @@
 }
 
 .scrollt:hover {
-    background: #4b58d1;
+    background: rgb(var(--secondary-color) / 80%);
 }
 
 .social__links {

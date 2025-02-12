@@ -1,5 +1,6 @@
 import "./Footer.css";
-import logo from "../../images/logo1.png";
+import logo from "../../images/logo4.png";
+import logo2 from "../../images/logo2.png";
 import { useMediaQuery } from "react-responsive";
 import {
   AddLocation,
@@ -27,7 +28,12 @@ export default function Footer() {
         padding: isTablet && 0,
       }}
     >
-      <div className="footer">
+      <div
+        style={{
+          flexDirection: isTablet ? "column" : "row",
+        }}
+        className="footer"
+      >
         <div
           className="left__footer"
           style={{
@@ -176,25 +182,21 @@ export default function Footer() {
               <h3 style={{ fontSize: isTablet && "13px" }}>Addresses</h3>
             </div>
             <div className="branch1">
-              <h4 style={{ fontSize: isTablet && "11px" }}>Thailand Bangkok</h4>
+              <h4 style={{ fontSize: isTablet && "11px" }}>United States</h4>
               <p style={{ fontSize: isTablet && "9px" }}>
-                101/13 Soi somprasong phetchburi 17 phayathai +66942520030
+                Olive St, Norwalk, CA 90650, United States
               </p>
             </div>
             <div className="branch2">
-              <h4 style={{ fontSize: isTablet && "11px" }}>
-                Nigeria: HEAD OFFICE
-              </h4>
+              <h4 style={{ fontSize: isTablet && "11px" }}>HEAD OFFICE</h4>
               <p style={{ fontSize: isTablet && "9px" }}>
-                17, Tokunbo Alli, Off Toyin Street, Ikeja, Lagos. +234 8032 429
-                618, +234 8120 255 749
+                Olive St, Norwalk, CA 90650, United States
               </p>
             </div>
             <div className="branch3">
               <h4 style={{ fontSize: isTablet && "11px" }}>BRANCH OFFICE</h4>
               <p style={{ fontSize: isTablet && "9px" }}>
-                8, Tokunbo Alli, Off Toyin Street, Ikeja, Lagos. +234 913 2312
-                725
+                Olive St, Norwalk, CA 90650, United States
               </p>
             </div>
           </div>
@@ -202,22 +204,24 @@ export default function Footer() {
         <div
           className="right__footer"
           style={{
-            display: isTablet ? "none" : isSmallScr && "flex",
+            width: isTablet && "100%",
+            padding: isTablet && "0 2rem",
+            border: isTablet && "none",
             alignItems: isSmallScr && "center",
             justifyContent: isSmallScr && "center",
           }}
         >
           <Link to="/">
             <img
-              src={logo}
+              src={isTablet ? logo2 : logo}
               alt=""
-              style={{ width: isSmallScr ? "150px" : "200px" }}
+              style={{ width: "100%" }}
             />
           </Link>
         </div>
       </div>
       <div className="copyright">
-        <cite>Created by Jay Z - Boblinks, All Rights Reserved.</cite>
+        <cite>Created by Jay Z - QwikParcel, All Rights Reserved.</cite>
       </div>
     </div>
   );

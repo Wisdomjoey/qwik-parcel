@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import Logo from "../../images/logo1.png";
+import Logo from "../../images/logo2.png";
 import {
   alpha,
   Button,
@@ -320,7 +320,7 @@ export default function Navbar({ bg = false }) {
           <img
             src={Logo}
             alt=""
-            height={isMobile ? "50" : isTablet ? "60" : "70"}
+            height={isMobile ? "40" : isTablet ? "50" : "60"}
           />
         </Link>
       </div>
