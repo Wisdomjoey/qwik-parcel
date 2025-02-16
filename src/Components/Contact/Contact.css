@@ -22,7 +22,7 @@
 
 .contact form {
     width: 40%;
-    background: rgba(40, 81, 158, .4);
+    background: rgb(var(--primary-color) / 40%);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -65,7 +65,7 @@
 }
 
 .MuiButton-containedPrimary.MuiButton-sizeMedium.contactbb:hover {
-    background: rgb(51, 94, 173) !important;
+    background: rgb(var(--primary-color) / 80%) !important;
 }
 
 textarea {
@@ -89,8 +89,4 @@ textarea {
     position: absolute;
     top: 5%;
     right: 5%;
-}
-
-.logo img {
-    width: 110px;
 }

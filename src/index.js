@@ -2,7 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Contact from "./Components/Contact/Contact";
 
-const root = ReactDOM.createRoot(document.getElementById("__bobby__"));
+const ele = document.getElementById("__bobby__");
+const ele1 = document.getElementById("__qp_support__");
 
-root.render(<App />);
+console.log(ele);
+console.log(ele1);
+
+if (ele) {
+  const root = ReactDOM.createRoot(ele);
+
+  root.render(<App />);
+}
+
+if (ele1) {
+  const root1 = ReactDOM.createRoot(ele1);
+
+  root1.render(<Contact />);
+}
