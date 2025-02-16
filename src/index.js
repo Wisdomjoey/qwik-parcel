@@ -7,8 +7,7 @@ import Contact from "./Components/Contact/Contact";
 const ele = document.getElementById("__bobby__");
 const ele1 = document.getElementById("__qp_support__");
 
-console.log(ele);
-console.log(ele1);
+console.log(window.location.href);
 
 if (ele) {
   const root = ReactDOM.createRoot(ele);

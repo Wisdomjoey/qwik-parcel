@@ -20,7 +20,7 @@ import InterState from "./Components/Service/InterState/InterState";
 import Procurement from "./Components/Service/Procurement/Procurement";
 import About from "./Components/About/About";
 import Qualities from "./Components/Qualities/Qualities";
-import H404 from "./Components/404/404";
+// import H404 from "./Components/404/404";
 import { useEffect } from "react";
 import Tracking from "./Components/Tracking/Tracking";
 
@@ -134,7 +134,7 @@ export default function App() {
                 </>
               }
             />
-            <Route path="*" element={<H404 />} exact />
+            {/* <Route path="*" element={<H404 />} exact /> */}
           </Routes>
         </Router>
       </div>
