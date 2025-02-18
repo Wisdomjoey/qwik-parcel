@@ -35,7 +35,7 @@ export default function App() {
         <Router>
           <Routes>
             <Route
-              path="/services/procurement"
+              path="/#/services/procurement"
               element={
                 <>
                   <Navbar />
@@ -45,7 +45,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/inter-state"
+              path="/#/services/inter-state"
               element={
                 <>
                   <Navbar />
@@ -55,7 +55,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/airfreight"
+              path="/#/services/airfreight"
               element={
                 <>
                   <Navbar />
@@ -65,7 +65,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/seafreight"
+              path="/#/services/seafreight"
               element={
                 <>
                   <Navbar />
@@ -75,7 +75,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/haulage"
+              path="/#/services/haulage"
               element={
                 <>
                   <Navbar />
@@ -85,7 +85,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/dispatch"
+              path="/#/services/dispatch"
               element={
                 <>
                   <Navbar />
@@ -95,7 +95,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/custom-clearance"
+              path="/#/services/custom-clearance"
               element={
                 <>
                   <Navbar />
@@ -105,7 +105,7 @@ export default function App() {
               exact
             />
             <Route
-              path="/services/forwarding"
+              path="/#/services/forwarding"
               element={
                 <>
                   <Navbar bg={true} />
@@ -115,8 +115,8 @@ export default function App() {
               }
               exact
             />
-            <Route path="/support" element={<Contact />} exact />
-            <Route path="/tracking" element={<Tracking />} exact />
+            <Route path="/#/support" element={<Contact />} exact />
+            <Route path="/#/tracking" element={<Tracking />} exact />
             <Route
               exact
               path="/"

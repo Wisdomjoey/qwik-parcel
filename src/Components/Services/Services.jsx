@@ -13,22 +13,22 @@ const service = [
   {
     head: "Freight Forwarding",
     cap: "In Boblink, we provide our customers with Freight forwarding to arrival airport or door to door delivery - Fast, efficient and reliable chain - Cargo pickup - Direct airline and express services for more urgent consignment.",
-    link: "/services/forwarding",
+    link: "/#/services/forwarding",
   },
   {
     head: "Haulage Services",
     cap: "Boblink's haulage services aims to provide value for money in a rather unsexy element of your business' transport. We have a fleet of our own vehicles and partner with agents on the continent to deliver great value for money for palletized shipping, full and part loads as well as same day delivery.",
-    link: "/services/haulage",
+    link: "/#/services/haulage",
   },
   {
     head: "Custom Clearance",
     cap: "We offer an array of cargo transportation and value-added services, including custom clearance and regulatory compliance assistance to expedite your international supply chain. Our Customs brokerage experts specialize in expediting your cargo through the supply chain as t enters the country via any of the many air, ocean or land entry points.",
-    link: "/services/custom-clearance",
+    link: "/#/services/custom-clearance",
   },
   {
     head: "Dispatch Services",
     cap: "At Boblink, our approach to courier services is unique. Our Courier partnership offer a cost effective, reliable, timeable courier service, baced up by the latest computer technology and online parcel track and trace facilities, making Boblink Couriers the ideal choice for small to medium sized businesses",
-    link: "/services/dispatch",
+    link: "/#/services/dispatch",
   },
 ];
 

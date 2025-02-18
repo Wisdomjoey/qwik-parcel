@@ -1,100 +1,221 @@
+.tracking__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  min-height: 100vh;
+  padding: 8rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
 .tracking {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .left__track {
-    flex: 1;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .left__track img {
-    width: 100%;
+  width: 100%;
 }
 
 .right__track {
-    flex: 1;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .right__track small {
-    font-size: 11px;
-    margin-top: 10px;
-    text-align: center;
+  font-size: 11px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .right__track a {
-    font-size: 11px;
-    margin-top: 3px;
-    color: rgb(var(--primary-color));
-    text-decoration: underline;
+  font-size: 11px;
+  margin-top: 3px;
+  color: rgb(var(--primary-color));
+  text-decoration: underline;
 }
 
 .tracking__con {
-    width: 95%;
-    height: 250px;
-    max-width: 30rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: rgb(var(--primary-color) / 70%);
+  width: 95%;
+  height: 250px;
+  max-width: 30rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgb(var(--primary-color));
 }
 
 .tracking__con h2 {
-    font-size: 30px;
-    color: #FFF;
+  font-size: 30px;
+  color: #fff;
 }
 
 .tracking__con form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .tracking__con form input:nth-of-type(1) {
-    width: 380px;
-    border: 1px solid lightgray;
-    outline: none;
-    height: 40px;
-    border-radius: 25px;
-    box-shadow: 0 0 10px rgba(40, 81, 158, .2);
-    padding: 0 20px;
+  width: 380px;
+  border: 1px solid lightgray;
+  outline: none;
+  height: 40px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(40, 81, 158, 0.2);
+  padding: 0 20px;
 }
 
 .tracking__con form input:nth-of-type(2) {
-    width: 130px;
-    border: none;
-    outline: none;
-    height: 35px;
-    background: #ededed;
-    color: rgb(var(--primary-color));
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 3px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, .2);
-    cursor: pointer;
+  width: 130px;
+  border: none;
+  outline: none;
+  height: 35px;
+  background: #ededed;
+  color: rgb(var(--primary-color));
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .tracking__con form input:nth-of-type(2):hover {
-    background: #e2d6ff;
+  background: #e2d6ff;
 }
 
 .tracking__con form input::placeholder {
-    color: rgb(var(--primary-color));
+  color: rgb(var(--primary-color));
+}
+
+.tracking__results {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+.tracking__results > h2 {
+  color: rgb(var(--primary-color));
+}
+
+.tracking__result {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.person__infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.person__info {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.person__info h2,
+.shipment__info h2, .packages__info h2 {
+  font-size: 1.3rem;
+  padding: 0.8rem 0;
+  color: rgb(var(--secondary-color));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: dimgray;
+}
+
+.status__display {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: rgb(var(--primary-color));
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.shipment__info,.packages__info {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.shipment__information {
+  color: dimgray;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 1.5rem;
+}
+
+.info__piece {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  max-width: 500px;
+  min-width: 200px;
+}
+
+.packages__information {
+  width: 100%;
+  overflow: auto;
+}
+
+.packages__information table {
+  width: 100%;
+  white-space: nowrap;
+  color: dimgray;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.packages__information table th:not(:last-child), .packages__information table td:not(:last-child) {
+  border-right: 1px solid lightgray;
+}
+
+.packages__information table thead tr {
+ background-color: #ededed;
+}
+
+.packages__information table th, .packages__information table td {
+  padding: 1rem;
 }

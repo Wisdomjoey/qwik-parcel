@@ -2,21 +2,91 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Navbar from "./Components/Navbar/Navbar";
+import Procurement from "./Components/Service/Procurement/Procurement";
+import InterState from "./Components/Service/InterState/InterState";
+import AirFreight from "./Components/Service/AirFreight/AirFreight";
+import SeaFreight from "./Components/Service/SeaFreight/SeaFreight";
+import Haulage from "./Components/Service/Haulage/Haulage";
+import Dispatch from "./Components/Service/Dispatch/Dispatch";
+import Custom from "./Components/Service/Custom/Custom";
+import Service from "./Components/Service/Service";
+import Footer from "./Components/Footer/Footer";
 import Contact from "./Components/Contact/Contact";
+import Tracking from "./Components/Tracking/Tracking";
 
 const ele = document.getElementById("__bobby__");
-const ele1 = document.getElementById("__qp_support__");
+const root = ReactDOM.createRoot(ele);
+const path = window.location.pathname;
+console.log(path);
+let component = <App />;
 
-console.log(window.location.href);
+if (path === "/#/services/procurement")
+  component = (
+    <>
+      <Navbar />
+      <Procurement />
+    </>
+  );
 
-if (ele) {
-  const root = ReactDOM.createRoot(ele);
+if (path === "/#/services/inter-state")
+  component = (
+    <>
+      <Navbar />
+      <InterState />
+    </>
+  );
 
-  root.render(<App />);
-}
+if (path === "/#/services/airfreight")
+  component = (
+    <>
+      <Navbar />
+      <AirFreight />
+    </>
+  );
 
-if (ele1) {
-  const root1 = ReactDOM.createRoot(ele1);
+if (path === "/#/services/seafreight")
+  component = (
+    <>
+      <Navbar />
+      <SeaFreight />
+    </>
+  );
 
-  root1.render(<Contact />);
-}
+if (path === "/#/services/haulage")
+  component = (
+    <>
+      <Navbar />
+      <Haulage />
+    </>
+  );
+
+if (path === "/#/services/dispatch")
+  component = (
+    <>
+      <Navbar />
+      <Dispatch />
+    </>
+  );
+
+if (path === "/#/services/custom-clearance")
+  component = (
+    <>
+      <Navbar />
+      <Custom />
+    </>
+  );
+
+if (path === "/#/services/forwarding")
+  component = (
+    <>
+      <Navbar bg={true} />
+      <Service />
+      <Footer />
+    </>
+  );
+
+if (path === "/#/support") component = <Contact />;
+if (path === "/#/tracking") component = <Tracking />;
+
+root.render(component);

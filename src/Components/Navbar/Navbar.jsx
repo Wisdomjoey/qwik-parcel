@@ -375,43 +375,43 @@ export default function Navbar({ bg = false }) {
                         open={open}
                         onClose={handleClose}
                       >
-                        <Link to="/services/airfreight">
+                        <Link to="/#/services/airfreight">
                           <MenuItem onClick={handleClose} disableRipple>
                             <FlightTakeoff sx={{ fontSize: 20 }} />
                             Air Freight
                           </MenuItem>
                         </Link>
-                        <Link to="/services/seafreight">
+                        <Link to="/#/services/seafreight">
                           <MenuItem onClick={handleClose} disableRipple>
                             <DirectionsBoat sx={{ fontSize: 20 }} />
                             Sea Freight
                           </MenuItem>
                         </Link>
-                        <Link to="/services/haulage">
+                        <Link to="/#/services/haulage">
                           <MenuItem onClick={handleClose} disableRipple>
                             <LocalShipping sx={{ fontSize: 20 }} />
                             Haulage Services
                           </MenuItem>
                         </Link>
-                        <Link to="/services/custom-clearance">
+                        <Link to="/#/services/custom-clearance">
                           <MenuItem onClick={handleClose} disableRipple>
                             <DocumentScanner sx={{ fontSize: 20 }} />
                             Custom Clearance
                           </MenuItem>
                         </Link>
-                        <Link to="/services/dispatch">
+                        <Link to="/#/services/dispatch">
                           <MenuItem onClick={handleClose} disableRipple>
                             <TwoWheeler sx={{ fontSize: 20 }} />
                             Dispatch Services
                           </MenuItem>
                         </Link>
-                        <Link to="/services/inter-state">
+                        <Link to="/#/services/inter-state">
                           <MenuItem onClick={handleClose} disableRipple>
                             <ConnectingAirports sx={{ fontSize: 20 }} />
                             Inter State Delivery
                           </MenuItem>
                         </Link>
-                        <Link to="/services/procurement">
+                        <Link to="/#/services/procurement">
                           <MenuItem onClick={handleClose} disableRipple>
                             <Handshake sx={{ fontSize: 20 }} />
                             Procurement
@@ -443,7 +443,7 @@ export default function Navbar({ bg = false }) {
                 </li>
               </ul>
               <hr />
-              <Link to="/tracking">
+              <Link to="/#/tracking">
                 <button
                   style={{ padding: ".2rem 1rem" }}
                   className="button navb sp"
@@ -511,43 +511,43 @@ export default function Navbar({ bg = false }) {
                       open={open}
                       onClose={() => setAnchorEl(null)}
                     >
-                      <Link to="/services/airfreight">
+                      <Link to="/#/services/airfreight">
                         <MenuItem onClick={handleClose} disableRipple>
                           <FlightTakeoff />
                           Air Freight
                         </MenuItem>
                       </Link>
-                      <Link to="/services/seafreight">
+                      <Link to="/#/services/seafreight">
                         <MenuItem onClick={handleClose} disableRipple>
                           <DirectionsBoat />
                           Sea Freight
                         </MenuItem>
                       </Link>
-                      <Link to="/services/haulage">
+                      <Link to="/#/services/haulage">
                         <MenuItem onClick={handleClose} disableRipple>
                           <LocalShipping />
                           Haulage Services
                         </MenuItem>
                       </Link>
-                      <Link to="/services/custom-clearance">
+                      <Link to="/#/services/custom-clearance">
                         <MenuItem onClick={handleClose} disableRipple>
                           <DocumentScanner />
                           Custom Clearance
                         </MenuItem>
                       </Link>
-                      <Link to="/services/dispatch">
+                      <Link to="/#/services/dispatch">
                         <MenuItem onClick={handleClose} disableRipple>
                           <TwoWheeler />
                           Dispatch Services
                         </MenuItem>
                       </Link>
-                      <Link to="/services/inter-state">
+                      <Link to="/#/services/inter-state">
                         <MenuItem onClick={handleClose} disableRipple>
                           <ConnectingAirports />
                           Inter State Delivery
                         </MenuItem>
                       </Link>
-                      <Link to="/services/procurement">
+                      <Link to="/#/services/procurement">
                         <MenuItem onClick={handleClose} disableRipple>
                           <Handshake />
                           Procurement
@@ -571,7 +571,7 @@ export default function Navbar({ bg = false }) {
                 </Nink>
               </li>
               <li>
-                <Link to="/tracking">
+                <Link to="/#/tracking">
                   <button
                     style={{
                       padding: ".2rem 1rem",
