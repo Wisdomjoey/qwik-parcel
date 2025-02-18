@@ -21,72 +21,81 @@ const path = document.location.hash;
 console.log(path);
 let component = <App />;
 
-if (path === "#/services/procurement")
-  component = (
-    <>
-      <Navbar />
-      <Procurement />
-    </>
-  );
+switch (path) {
+  case "#/services/procurement":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <Procurement />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/inter-state":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <InterState />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/airfreight":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <AirFreight />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/seafreight":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <SeaFreight />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/haulage":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <Haulage />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/dispatch":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <Dispatch />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/custom-clearance":
+    component = (
+      <React.Fragment>
+        <Navbar />
+        <Custom />
+      </React.Fragment>
+    );
+    break;
+  case "#/services/forwarding":
+    component = (
+      <React.Fragment>
+        <Navbar bg={true} />
+        <Service />
+        <Footer />
+      </React.Fragment>
+    );
+    break;
+  case "#/support":
+    component = <Contact />;
+    break;
+  case "#/tracking":
+    component = <Tracking />;
+    break;
 
-if (path === "#/services/inter-state")
-  component = (
-    <>
-      <Navbar />
-      <InterState />
-    </>
-  );
-
-if (path === "#/services/airfreight")
-  component = (
-    <>
-      <Navbar />
-      <AirFreight />
-    </>
-  );
-
-if (path === "#/services/seafreight")
-  component = (
-    <>
-      <Navbar />
-      <SeaFreight />
-    </>
-  );
-
-if (path === "#/services/haulage")
-  component = (
-    <>
-      <Navbar />
-      <Haulage />
-    </>
-  );
-
-if (path === "#/services/dispatch")
-  component = (
-    <>
-      <Navbar />
-      <Dispatch />
-    </>
-  );
-
-if (path === "#/services/custom-clearance")
-  component = (
-    <>
-      <Navbar />
-      <Custom />
-    </>
-  );
-
-if (path === "#/services/forwarding")
-  component = (
-    <>
-      <Navbar bg={true} />
-      <Service />
-      <Footer />
-    </>
-  );
-
-if (path === "#/support") component = <Contact />;
-if (path === "#/tracking") component = <Tracking />;
+  default:
+    break;
+}
 
 root.render(component);

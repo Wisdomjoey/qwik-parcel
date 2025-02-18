@@ -310,6 +310,11 @@ export default function Navbar({ bg = false }) {
     },
   ];
 
+  useEffect(() => {
+    const loader = document.getElementById("loader");
+    loader.classList.add("mounted");
+  });
+
   return (
     <div
       className={bg ? "navbar nav" : state ? "navbar nav" : "navbar"}

@@ -1,6 +1,7 @@
 import "./Tracking.css";
 import bg from "../../images/5229-min.jpg";
 import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
 
 export default function Tracking() {
   const isSmallScr = useMediaQuery({
@@ -8,6 +9,11 @@ export default function Tracking() {
   });
   const isMobile = useMediaQuery({
     query: "(max-width: 480px)",
+  });
+
+  useEffect(() => {
+    const loader = document.getElementById("loader");
+    loader.classList.add("mounted");
   });
 
   return (

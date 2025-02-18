@@ -21,15 +21,9 @@ import Procurement from "./Components/Service/Procurement/Procurement";
 import About from "./Components/About/About";
 import Qualities from "./Components/Qualities/Qualities";
 // import H404 from "./Components/404/404";
-import { useEffect } from "react";
 import Tracking from "./Components/Tracking/Tracking";
 
 export default function App() {
-  useEffect(() => {
-    const loader = document.getElementById("loader");
-    loader.classList.add("mounted");
-  });
-
   return (
       <div className="App" id="app">
         <Router>

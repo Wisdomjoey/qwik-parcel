@@ -2,7 +2,7 @@ import "./Contact.css";
 import Logo from "../../images/logo2.png";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 // import emailjs from '@emailjs/browser';
 // import { useAlert } from 'react-alert';
 import { useState } from "react";
@@ -61,6 +61,11 @@ export default function Contact() {
   };
 
   document.title = "Boblink Logistics | Contact";
+
+  useEffect(() => {
+    const loader = document.getElementById("loader");
+    loader.classList.add("mounted");
+  });
 
   return (
     <div className="contact">
