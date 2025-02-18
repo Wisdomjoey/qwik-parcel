@@ -17,11 +17,11 @@ import Tracking from "./Components/Tracking/Tracking";
 
 const ele = document.getElementById("__bobby__");
 const root = ReactDOM.createRoot(ele);
-const path = window.location.pathname;
+const path = document.location.hash;
 console.log(path);
 let component = <App />;
 
-if (path === "/#/services/procurement")
+if (path === "#/services/procurement")
   component = (
     <>
       <Navbar />
@@ -29,7 +29,7 @@ if (path === "/#/services/procurement")
     </>
   );
 
-if (path === "/#/services/inter-state")
+if (path === "#/services/inter-state")
   component = (
     <>
       <Navbar />
@@ -37,7 +37,7 @@ if (path === "/#/services/inter-state")
     </>
   );
 
-if (path === "/#/services/airfreight")
+if (path === "#/services/airfreight")
   component = (
     <>
       <Navbar />
@@ -45,7 +45,7 @@ if (path === "/#/services/airfreight")
     </>
   );
 
-if (path === "/#/services/seafreight")
+if (path === "#/services/seafreight")
   component = (
     <>
       <Navbar />
@@ -53,7 +53,7 @@ if (path === "/#/services/seafreight")
     </>
   );
 
-if (path === "/#/services/haulage")
+if (path === "#/services/haulage")
   component = (
     <>
       <Navbar />
@@ -61,7 +61,7 @@ if (path === "/#/services/haulage")
     </>
   );
 
-if (path === "/#/services/dispatch")
+if (path === "#/services/dispatch")
   component = (
     <>
       <Navbar />
@@ -69,7 +69,7 @@ if (path === "/#/services/dispatch")
     </>
   );
 
-if (path === "/#/services/custom-clearance")
+if (path === "#/services/custom-clearance")
   component = (
     <>
       <Navbar />
@@ -77,7 +77,7 @@ if (path === "/#/services/custom-clearance")
     </>
   );
 
-if (path === "/#/services/forwarding")
+if (path === "#/services/forwarding")
   component = (
     <>
       <Navbar bg={true} />
@@ -86,7 +86,7 @@ if (path === "/#/services/forwarding")
     </>
   );
 
-if (path === "/#/support") component = <Contact />;
-if (path === "/#/tracking") component = <Tracking />;
+if (path === "#/support") component = <Contact />;
+if (path === "#/tracking") component = <Tracking />;
 
 root.render(component);
