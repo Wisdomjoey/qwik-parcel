@@ -62,13 +62,16 @@ export default function Contact() {
 
   return (
     <div className="contact">
-      <div className="contact__con">
+      <div
+        className="contact__con"
+        style={{ padding: isMobile ? "7rem 0" : "10rem 0" }}
+      >
         <form
           ref={form}
           onSubmit={sendEmail}
           style={{
             width: isMobile ? "90%" : isSmallScr && "65%",
-            padding: isSmallScr ? "1rem" : '3rem',
+            padding: isSmallScr ? "1rem" : "3rem",
             gap: isMobile && ".7rem",
           }}
         >

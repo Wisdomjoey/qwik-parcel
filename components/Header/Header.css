@@ -50,6 +50,26 @@ background-image linear-gradient(315deg, #20bf55 0%, #01baef 74%); */
   height: 100%;
 }
 
+.tracking__component {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tracking {
+  flex-basis: 50%;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tracking form, .tracking input {
+  width: 100%;
+}
+
 .media__con {
   width: 100%;
   margin-top: 110vh;

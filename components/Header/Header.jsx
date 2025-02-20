@@ -113,6 +113,37 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      <div className="tracking__component">
+        <div className="tracking">
+          <form
+            action="https://www.track-trace.com/aircargo"
+            target="_blank"
+            method="post"
+          >
+            <input
+              style={{
+                width: isMobile && "290px",
+                height: isMobile && "37px",
+              }}
+              type="text"
+              name="number"
+              placeholder="Enter Tracking ID..."
+            />
+
+            <input
+              style={{
+                width: isMobile && "100px",
+                height: isMobile && "30px",
+                fontSize: isMobile && "16px",
+              }}
+              type="submit"
+              name="commit"
+              value="Track"
+            />
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
