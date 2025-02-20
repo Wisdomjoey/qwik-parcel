@@ -11,6 +11,7 @@
     "cra-template": "1.2.0",
     "emailjs": "^4.0.3",
     "framer-motion": "^12.4.1",
+    "next": "15.1.2",
     "react": "^19.0.0",
     "react-animations": "^1.0.0",
     "react-dom": "^19.0.0",
@@ -21,10 +22,9 @@
     "swiper": "^11.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "eslintConfig": {
     "extends": [

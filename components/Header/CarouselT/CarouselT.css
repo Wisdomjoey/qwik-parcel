@@ -1,0 +1,111 @@
+.carousel-root {
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.carousel, .slider-wrapper, .slider, .slide {
+    height: 100%;
+}
+
+.car__slides {
+    width: 100%;
+    height: 100%;
+}
+
+.car__slide1 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .8), transparent) ,url(../../../assets/images/hero_ground.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.car__slide2 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .8), transparent) ,url(../../../assets/images/land.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.car__slide3 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .8), transparent) ,url(../../../assets/images/ship.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.car__slide4 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .8), transparent) ,url(../../../assets/images/hero_ship.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.car__slide5 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .8), transparent) ,url(../../../assets/images/plane.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.car__slide6 {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .8), transparent) ,url(../../../assets/images/home1-rev-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.slide__info {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    left: 5%;
+    top: 30%;
+    align-items: flex-start;
+    width: 50%;
+    gap: 1.2rem;
+    text-align: start;
+    z-index: 100;
+    flex: 1;
+}
+
+/* .slide__info > * {
+    position: absolute;
+} */
+
+.slide__info h1 {
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.slide__info p {
+    font-size: 15px;
+    font-family: Poppins-Light;
+    width: 70%;
+    /* top: 90px; */
+}
+
+.slide__info button {
+    background: transparent;
+    outline: none;
+    border: 2px solid #FFF;
+    font-size: 19px;
+    color: #FFF;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    /* top: 11.5rem; */
+}
