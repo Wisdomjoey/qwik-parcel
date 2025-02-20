@@ -76,16 +76,11 @@ background-image linear-gradient(315deg, #20bf55 0%, #01baef 74%); */
   padding: 0.8rem;
   border: 2px solid #fff;
   outline: none;
-  color: #fff;
   border-radius: 6px;
 }
 
 .tracking form input:nth-child(1):focus {
   border: 2px solid rgb(var(--secondary-color));
-}
-
-.tracking form input:nth-child(1)::placeholder {
-  color: #ededed;
 }
 
 .tracking form input:nth-child(2) {
