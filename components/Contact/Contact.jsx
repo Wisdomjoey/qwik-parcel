@@ -68,7 +68,7 @@ export default function Contact() {
           onSubmit={sendEmail}
           style={{
             width: isMobile ? "90%" : isSmallScr && "65%",
-            padding: isSmallScr && "1.5rem",
+            padding: isSmallScr ? "1rem" : '3rem',
             gap: isMobile && ".7rem",
           }}
         >
@@ -98,7 +98,6 @@ export default function Contact() {
             style={{
               height: isMobile && "32px",
               fontSize: isMobile && "11px",
-              width: isMobile && "85%",
             }}
           />
           <input
@@ -113,7 +112,6 @@ export default function Contact() {
             style={{
               height: isMobile && "32px",
               fontSize: isMobile && "11px",
-              width: isMobile && "85%",
             }}
           />
           <input
@@ -128,7 +126,6 @@ export default function Contact() {
             style={{
               height: isMobile && "32px",
               fontSize: isMobile && "11px",
-              width: isMobile && "85%",
             }}
           />
           <textarea
@@ -141,7 +138,6 @@ export default function Contact() {
             placeholder="Message"
             style={{
               fontSize: isMobile && "11px",
-              width: isMobile && "85%",
             }}
           ></textarea>
           {/* <input

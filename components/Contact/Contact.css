@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background: url(../../assets/images/signupbg.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -18,10 +18,12 @@
     align-items: center;
     justify-content: center;
     color: #FFF;
+    padding: 10rem 0;
 }
 
 .contact form {
-    width: 40%;
+    width: 95%;
+    max-width: 35rem;
     background: rgb(var(--primary-color) / 40%);
     border-radius: 10px;
     display: flex;
@@ -30,12 +32,15 @@
     border: 2px solid #FFF;
     box-shadow: 0 0 20px 10px rgba(255, 255, 255, .2);
     justify-content: center;
-    padding: 3rem 0;
     gap: 1.5rem;
 }
 
+.contact form h1 {
+    margin-bottom: 0.5rem;
+}
+
 .contact form>input, .MuiButton-containedPrimary.MuiButton-sizeMedium.contactbb {
-    width: 70%;
+    width: 100%;
     height: 37px !important;
     border-radius: 5px !important;
     padding: 0 1.5rem !important;
@@ -69,8 +74,7 @@
 }
 
 textarea {
-    width: 70%;
-    margin-bottom: 2rem;
+    width: 100%;
     border-radius: 5px;
     padding: 1rem 1.5rem;
     outline: none;
