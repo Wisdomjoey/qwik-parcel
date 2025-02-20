@@ -4,19 +4,21 @@ import { useMediaQuery } from "react-responsive";
 // import Navbar from '../Navbar/Navbar';
 import CarouselT from "./CarouselT/CarouselT";
 import "./Header.css";
+import { useRouter } from "next/navigation";
 // import { useEffect } from 'react';
 
 export default function Header() {
+  const router = useRouter();
   // const [sub, setsub] = useState(false);
   // const [val, setval] = useState('');
   // const [err, seterr] = useState('');
 
-  // const isTablet = useMediaQuery({
-  //   query: "(max-width: 768px)",
-  // });
-  const isMobile = useMediaQuery({
-    query: "(max-width: 480px)",
+  const isTablet = useMediaQuery({
+    query: "(max-width: 768px)",
   });
+  // const isMobile = useMediaQuery({
+  //   query: "(max-width: 480px)",
+  // });
 
   // const handleCls = () => {
   //     setsub(prev => !prev);
@@ -44,6 +46,17 @@ export default function Header() {
   //         setsub(true);
   //     }, 10000)
   // }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.target);
+    const id = form.get("number");
+
+    if (!id || id === "") return;
+
+    router.push(`/tracking?id=${id}`);
+  };
 
   return (
     <div className="header">
@@ -104,7 +117,7 @@ export default function Header() {
       <div
         className="top__header"
         style={{
-          maxHeight: isMobile && "30rem",
+          minHeight: isTablet ? "50rem" : "auto",
         }}
       >
         <div className="top">
@@ -114,33 +127,26 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="tracking__component">
-        <div className="tracking">
-          <form
-            action="https://www.track-trace.com/aircargo"
-            target="_blank"
-            method="post"
-          >
+      <div
+        className="tracking__component"
+        style={{
+          alignItems: isTablet ? "flex-end" : "center",
+          justifyContent: isTablet ? "center" : "flex-end",
+        }}
+      >
+        <div
+          className="tracking"
+          style={{ flexBasis: isTablet ? "60%" : "45%" }}
+        >
+          <form action="" onSubmit={handleSubmit}>
             <input
-              style={{
-                width: isMobile && "290px",
-                height: isMobile && "37px",
-              }}
+              required
               type="text"
               name="number"
               placeholder="Enter Tracking ID..."
             />
 
-            <input
-              style={{
-                width: isMobile && "100px",
-                height: isMobile && "30px",
-                fontSize: isMobile && "16px",
-              }}
-              type="submit"
-              name="commit"
-              value="Track"
-            />
+            <input type="submit" name="commit" value="Track" />
           </form>
         </div>
       </div>
