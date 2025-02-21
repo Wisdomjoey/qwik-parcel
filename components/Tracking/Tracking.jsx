@@ -82,8 +82,8 @@ export default function Tracking({ data, error }) {
             );
 
             // Add Routes
-            const c1 = new mapboxgl.LngLat(-122.42, 37.78);
-            const c2 = new mapboxgl.LngLat(-77.03, 38.91);
+            const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
+            const c2 = new MapBoxGL.LngLat(-77.03, 38.91);
             const distance = c1.distanceTo(c2);
 
             if ((distance / 1000).toFixed(2) < 25000) {
