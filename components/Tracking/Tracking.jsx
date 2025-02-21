@@ -1,14 +1,15 @@
 import "./Tracking.css";
 import bg from "../../assets/images/5229-min.jpg";
 import { useMediaQuery } from "react-responsive";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import JsBarcode from "jsbarcode";
 // import ReactMapBoxGL from "react-mapbox-gl";
 import MapBoxGL from "mapbox-gl";
-import turf from "@turf/turf";
+import * as turf from "@turf/turf";
 
 export default function Tracking({ data, error }) {
   const mapConRef = useRef(null);
+  const [err, setErr] = useState(error);
   const isSmallScr = useMediaQuery({
     query: "(max-width: 1024px)",
   });
@@ -31,6 +32,8 @@ export default function Tracking({ data, error }) {
   };
 
   useEffect(() => {
+    if (err) return;
+
     const loadMap = async () => {
       try {
         const locations = [
@@ -59,6 +62,8 @@ export default function Tracking({ data, error }) {
               const data = await res.json();
 
               centers.push(data.features[0].center);
+            } else {
+              return setErr("Something went wrong");
             }
           }
 
@@ -106,6 +111,11 @@ export default function Tracking({ data, error }) {
                     "line-width": 8,
                   },
                 });
+              })
+              .catch((err) => {
+                console.error(err);
+
+                setErr("Something went wrong");
               });
 
             // Animate Route
@@ -143,24 +153,52 @@ export default function Tracking({ data, error }) {
               // Number of steps to use in the arc and animation, more steps means
               // a smoother arc and animation, but too many steps will result in a
               // low frame rate
-              const steps = 500;
               let counter = 0;
+              if (!route.features[0] || !route.features[0].geometry) {
+                console.error("Invalid route data");
+                return;
+              }
+
+              const lineString = route.features[0].geometry;
+              const start = lineString.coordinates[0];
+              const end = lineString.coordinates[1];
+              const step = turf.length(lineString) / 500;
 
               function animate() {
-                const start =
-                  route.features[0].geometry.coordinates[
-                    counter >= steps ? counter - 1 : counter
-                  ];
-                const end =
-                  route.features[0].geometry.coordinates[
-                    counter >= steps ? counter : counter + 1
-                  ];
-                if (!start || !end) return;
+                if (counter >= turf.length(lineString)) {
+                  // Animation has reached the end
+                  return;
+                }
 
-                // Update point geometry to a new position based on counter denoting
-                // the index to access the arc
+                // Update the moving point
+                const alongPoint = turf.along(lineString, counter);
+
                 point.features[0].geometry.coordinates =
-                  route.features[0].geometry.coordinates[counter];
+                  alongPoint.geometry.coordinates;
+
+                // Calculate and update the midpoint
+                const remainingLine = turf.lineSlice(
+                  alongPoint,
+                  turf.point(end),
+                  lineString
+                );
+                const midpoint = turf.along(
+                  remainingLine,
+                  turf.length(remainingLine) / 2
+                );
+
+                map.getSource("midpoint").setData({
+                  type: "FeatureCollection",
+                  features: [
+                    {
+                      type: "Feature",
+                      geometry: {
+                        type: "Point",
+                        coordinates: midpoint.geometry.coordinates,
+                      },
+                    },
+                  ],
+                });
 
                 // Calculate the bearing to ensure the icon is rotated to match the route arc
                 // The bearing is calculated between the current point and the next point, except
@@ -173,12 +211,8 @@ export default function Tracking({ data, error }) {
                 // Update the source with this new data
                 map.getSource("point").setData(point);
 
-                // Request the next frame of animation as long as the end has not been reached
-                if (counter < steps) {
-                  requestAnimationFrame(function () {
-                    animate(counter + 1);
-                  });
-                }
+                counter = counter + step;
+                requestAnimationFrame(frame);
               }
 
               // Add Data to Map
@@ -223,6 +257,8 @@ export default function Tracking({ data, error }) {
         }
       } catch (error) {
         console.error(error);
+
+        setErr("Something went wrong");
       }
     };
 
@@ -231,7 +267,7 @@ export default function Tracking({ data, error }) {
 
       loadMap();
     }
-  }, [data]);
+  }, [data, err]);
 
   return (
     <div className="tracking__wrapper">
