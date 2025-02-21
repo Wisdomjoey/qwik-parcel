@@ -82,42 +82,47 @@ export default function Tracking({ data, error }) {
             );
 
             // Add Routes
-            const coordinates = [centers[0], centers[centers.length - 1]]
-              .map((center) => center.join(","))
-              .join(";");
-            console.log(coordinates);
-            const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
+            const c1 = new mapboxgl.LngLat(-122.42, 37.78);
+            const c2 = new mapboxgl.LngLat(-77.03, 38.91);
+            const distance = c1.distanceTo(c2);
 
-            const res = await fetch(url);
+            if ((distance / 1000).toFixed(2) < 25000) {
+              const coordinates = [centers[0], centers[centers.length - 1]]
+                .map((center) => center.join(","))
+                .join(";");
+              const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
 
-            if (!res.ok) return setErr("Invalid Location");
+              const res = await fetch(url);
 
-            const routeData = await res.json();
-            const route = routeData.routes[0].geometry;
+              if (!res.ok) return setErr("Invalid Location");
 
-            // Add the route to the map
-            map.addSource("route", {
-              type: "geojson",
-              data: {
-                type: "Feature",
-                properties: {},
-                geometry: route,
-              },
-            });
+              const routeData = await res.json();
+              const route = routeData.routes[0].geometry;
 
-            map.addLayer({
-              id: "route",
-              type: "line",
-              source: "route",
-              layout: {
-                "line-join": "round",
-                "line-cap": "round",
-              },
-              paint: {
-                "line-color": "#888",
-                "line-width": 8,
-              },
-            });
+              // Add the route to the map
+              map.addSource("route", {
+                type: "geojson",
+                data: {
+                  type: "Feature",
+                  properties: {},
+                  geometry: route,
+                },
+              });
+
+              map.addLayer({
+                id: "route",
+                type: "line",
+                source: "route",
+                layout: {
+                  "line-join": "round",
+                  "line-cap": "round",
+                },
+                paint: {
+                  "line-color": "#888",
+                  "line-width": 8,
+                },
+              });
+            }
           });
 
           // Animate Route
