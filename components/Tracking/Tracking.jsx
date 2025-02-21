@@ -9,7 +9,7 @@ import * as turf from "@turf/turf";
 
 export default function Tracking({ data, error }) {
   const mapConRef = useRef(null);
-  const [err, setErr] = useState(error);
+  const [err, setErr] = useState();
   const isSmallScr = useMediaQuery({
     query: "(max-width: 1024px)",
   });
@@ -60,6 +60,8 @@ export default function Tracking({ data, error }) {
 
             if (res.ok) {
               const data = await res.json();
+
+              if (data.features.length <= 0) return setErr("Invalid Location");
 
               centers.push(data.features[0].center);
             } else {
@@ -156,7 +158,7 @@ export default function Tracking({ data, error }) {
               let counter = 0;
               if (!route.features[0] || !route.features[0].geometry) {
                 console.error("Invalid route data");
-                return;
+                return setErr("Invalid route data");
               }
 
               const lineString = route.features[0].geometry;
@@ -306,9 +308,9 @@ export default function Tracking({ data, error }) {
         </div>
       </div>
 
-      {err && (
+      {error && (
         <div className="error__con">
-          <p>{err}</p>
+          <p>{error}</p>
         </div>
       )}
 
@@ -498,7 +500,13 @@ export default function Tracking({ data, error }) {
             </div>
           </div>
 
-          <div ref={mapConRef} className="map__display"></div>
+          {err ? (
+            <div className="error__con">
+              <p>{err}</p>
+            </div>
+          ) : (
+            <div ref={mapConRef} className="map__display"></div>
+          )}
         </div>
       )}
     </div>
