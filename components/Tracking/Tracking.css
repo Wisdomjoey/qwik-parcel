@@ -183,6 +183,10 @@
   overflow: hidden;
 }
 
+.map__display {
+  min-height: 30rem;
+}
+
 .shipment__information {
   color: dimgray;
   display: grid;
