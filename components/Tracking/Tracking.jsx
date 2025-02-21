@@ -218,6 +218,14 @@ export default function Tracking({ data, error }) {
               }
 
               // Add Data to Map
+              map.addSource("midpoint", {
+                type: "geojson",
+                data: {
+                  type: "FeatureCollection",
+                  features: [],
+                },
+              });
+
               map.addSource("route", {
                 type: "geojson",
                 data: route,
@@ -264,8 +272,8 @@ export default function Tracking({ data, error }) {
       }
     };
 
-    if (data?.barcode) {
-      JsBarcode("#barcode", data.tracking_no);
+    if (data) {
+      if (data.barcode) JsBarcode("#barcode", data.tracking_no);
 
       loadMap();
     }
