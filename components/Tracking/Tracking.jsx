@@ -60,7 +60,7 @@ export default function Tracking({ data, error }) {
 
             if (res.ok) {
               const data = await res.json();
-
+              console.log(data);
               centers.push(data.features[0].center);
             } else {
               return setErr("Something went wrong");
@@ -306,9 +306,9 @@ export default function Tracking({ data, error }) {
         </div>
       </div>
 
-      {error && (
+      {err && (
         <div className="error__con">
-          <p>{error}</p>
+          <p>{err}</p>
         </div>
       )}
 
