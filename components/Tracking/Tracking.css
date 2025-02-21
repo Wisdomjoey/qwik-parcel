@@ -144,7 +144,8 @@
 }
 
 .person__info h2,
-.shipment__info h2, .packages__info h2 {
+.shipment__info h2,
+.packages__info h2 {
   font-size: 1.3rem;
   padding: 0.8rem 0;
   color: rgb(var(--secondary-color));
@@ -170,7 +171,9 @@
   color: #fff;
 }
 
-.shipment__info,.packages__info {
+.shipment__info,
+.packages__info,
+.map__display {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
@@ -215,14 +218,16 @@
   gap: 1rem;
 }
 
-.packages__information table th:not(:last-child), .packages__information table td:not(:last-child) {
+.packages__information table th:not(:last-child),
+.packages__information table td:not(:last-child) {
   border-right: 1px solid lightgray;
 }
 
 .packages__information table thead tr {
- background-color: #ededed;
+  background-color: #ededed;
 }
 
-.packages__information table th, .packages__information table td {
+.packages__information table th,
+.packages__information table td {
   padding: 1rem;
 }

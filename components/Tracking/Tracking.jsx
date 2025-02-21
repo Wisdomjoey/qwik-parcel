@@ -1,10 +1,13 @@
 import "./Tracking.css";
 import bg from "../../assets/images/5229-min.jpg";
 import { useMediaQuery } from "react-responsive";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import JsBarcode from "jsbarcode";
+import ReactMapBoxGL from "react-mapbox-gl";
+import MapBoxGL from "mapbox-gl";
 
 export default function Tracking({ data, error }) {
+  const mapConRef = useRef(null);
   const isSmallScr = useMediaQuery({
     query: "(max-width: 1024px)",
   });
@@ -13,6 +16,9 @@ export default function Tracking({ data, error }) {
   });
   const isTablet = useMediaQuery({
     query: "(max-width: 768px)",
+  });
+  const Map = new MapBoxGL.Map({
+    accessToken: process.env.NEXT_PUBLIC_MAPBOX_KEY,
   });
 
   const formatDT = (date) => {
@@ -26,6 +32,14 @@ export default function Tracking({ data, error }) {
   useEffect(() => {
     if (data?.barcode) {
       JsBarcode("#barcode", data.tracking_no);
+
+      MapBoxGL.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
+
+      const map = new MapBoxGL.Map({ container: mapConRef.current });
+
+      map.on('load', () => {
+        
+      })
     }
   }, [data]);
 
@@ -80,7 +94,7 @@ export default function Tracking({ data, error }) {
 
           <div className="tracking__bio">
             {data?.barcode ? (
-              <svg id="barcode"></svg>
+              <svg id="barcode" style={{ width: "100%" }}></svg>
             ) : (
               <h3>JZ-OFRVNORROE5678-CARGO</h3>
             )}
@@ -140,10 +154,10 @@ export default function Tracking({ data, error }) {
             <div
               className="shipment__information"
               style={{
-                gridTemplateColumns: isTablet
-                  ? "auto auto auto"
-                  : isMobile
+                gridTemplateColumns: isMobile
                   ? "auto auto"
+                  : isTablet
+                  ? "auto auto auto"
                   : "auto auto auto auto",
               }}
             >
@@ -257,6 +271,8 @@ export default function Tracking({ data, error }) {
               </table>
             </div>
           </div>
+
+          <div ref={mapConRef} className="map__display"></div>
         </div>
       )}
     </div>
