@@ -62,28 +62,10 @@ export default function Footer() {
                 <h3 style={{ fontSize: isTablet && "13px" }}>Contacts</h3>
               </div>
               <a
-                href="tel:+234 8032 429 618"
+                href="tel:+1 561-240-8558"
                 style={{ fontSize: isTablet && "9px" }}
               >
-                +234(0) 8032 429 618
-              </a>
-              <a
-                href="tel:+66942520030"
-                style={{ fontSize: isTablet && "9px" }}
-              >
-                +66942520030
-              </a>
-              <a
-                href="tel:+234 8120 255 749"
-                style={{ fontSize: isTablet && "9px" }}
-              >
-                +234(0) 8120 255 749
-              </a>
-              <a
-                href="tel:+234 913 2312 725"
-                style={{ fontSize: isTablet && "9px" }}
-              >
-                +234(0) 913 2312 725
+                +1 561-240-8558
               </a>
             </div>
             <div
@@ -104,17 +86,15 @@ export default function Footer() {
                     <AlternateEmail
                       sx={{ color: "white", fontSize: isTablet ? 15 : 20 }}
                     />
-                    <h4 style={{ fontSize: isTablet && "11px" }}>OutLook</h4>
+                    <h4 style={{ fontSize: isTablet && "11px" }}>Support</h4>
                   </div>
                   <a
-                    href="mailto:boblinklogistics@outlook.com"
+                    href="mailto:support@qwikparcel.com"
                     target="_blank"
                     rel="noreferrer"
                     style={{ fontSize: isTablet && "9px" }}
                   >
-                    boblinklogistics@
-                    <br />
-                    outlook.com
+                    support@qwikparcel.com
                   </a>
                 </div>
                 <div className="whats">
@@ -125,12 +105,12 @@ export default function Footer() {
                     <h4 style={{ fontSize: isTablet && "11px" }}>Whatsapp</h4>
                   </div>
                   <a
-                    href="https://wa.me/message/08032429618"
+                    href="/"
                     target="_blank"
                     rel="noreferrer"
                     style={{ fontSize: isTablet && "9px" }}
                   >
-                    +234 803 2429 618
+                    +1 561-240-8558
                   </a>
                 </div>
                 <div className="insta">
@@ -140,13 +120,8 @@ export default function Footer() {
                     />
                     <h4 style={{ fontSize: isTablet && "11px" }}>Instagram</h4>
                   </div>
-                  <a
-                    href="https://instagram.com/boblink_worldwide"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ fontSize: isTablet && "9px" }}
-                  >
-                    boblink_worldwide
+                  <a href="/" style={{ fontSize: isTablet && "9px" }}>
+                    @qwikparcel
                   </a>
                 </div>
                 <div className="face">
@@ -157,12 +132,12 @@ export default function Footer() {
                     <h4 style={{ fontSize: isTablet && "11px" }}>Facebook</h4>
                   </div>
                   <a
-                    href="https://www.facebook.com/bwlservices"
+                    href="/"
                     target="_blank"
                     rel="noreferrer"
                     style={{ fontSize: isTablet && "9px" }}
                   >
-                    @bwlservices
+                    @qwikparcel
                   </a>
                 </div>
               </div>
