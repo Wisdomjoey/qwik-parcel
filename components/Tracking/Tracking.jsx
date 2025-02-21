@@ -107,12 +107,14 @@ export default function Tracking({ data, error }) {
             // });
 
             // Add Routes
-            const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
-            const c2 = new MapBoxGL.LngLat(-77.03, 38.91);
+            const cd1 = centers[0];
+            const cd2 = centers[centers.length - 1];
+            const c1 = new MapBoxGL.LngLat(cd1[0], cd1[1]);
+            const c2 = new MapBoxGL.LngLat(cd2[0], cd2[1]);
             const distance = c1.distanceTo(c2);
-console.log(distance)
+
             if ((distance / 1000).toFixed(2) < 25000) {
-              const coordinates = [centers[0], centers[centers.length - 1]]
+              const coordinates = [cd1, cd2]
                 .map((center) => center.join(","))
                 .join(";");
               const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
