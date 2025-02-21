@@ -135,7 +135,7 @@ export default function Header() {
         }}
       >
         <div
-          className="tracking"
+          className="hero__tracking"
           style={{ flexBasis: isTablet ? "60%" : "45%" }}
         >
           <form action="" onSubmit={handleSubmit}>

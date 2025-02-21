@@ -1,15 +1,21 @@
 import "./Tracking.css";
 import bg from "../../assets/images/5229-min.jpg";
 import { useMediaQuery } from "react-responsive";
-import { useEffect } from "react";
 
-export default function Tracking() {
+export default function Tracking({ data, barcode }) {
   const isSmallScr = useMediaQuery({
     query: "(max-width: 1024px)",
   });
   const isMobile = useMediaQuery({
     query: "(max-width: 480px)",
   });
+  const isTablet = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
+  const formatDT = (date) => {
+    return new Date(date).toLocaleString();
+  };
 
   return (
     <div className="tracking__wrapper">
@@ -61,6 +67,10 @@ export default function Tracking() {
           Tracking Results
         </h2>
 
+        <div className="tracking__bio">
+          {barcode ?? <h3>JZ-OFRVNORROE5678-CARGO</h3>}
+        </div>
+
         <div className="tracking__result">
           <div className="person__infos">
             <div className="person__info">
@@ -68,16 +78,16 @@ export default function Tracking() {
 
               <div className="information">
                 <p>
-                  <strong>Name:</strong> Jonathan Wisdom
+                  <strong>Name:</strong> {data.shipper.name}
                 </p>
                 <p>
-                  <strong>Email:</strong> joeboywizz@gmail.com
+                  <strong>Email:</strong> {data.shipper.email}
                 </p>
                 <p>
-                  <strong>Phone:</strong> +2348029494195
+                  <strong>Phone:</strong> {data.shipper.phone}
                 </p>
                 <p>
-                  <strong>Address:</strong> Some Address Here
+                  <strong>Address:</strong> {data.shipper.address}
                 </p>
               </div>
             </div>
@@ -87,16 +97,16 @@ export default function Tracking() {
 
               <div className="information">
                 <p>
-                  <strong>Name:</strong> Jonathan Wisdom
+                  <strong>Name:</strong> {data.shipper.name}
                 </p>
                 <p>
-                  <strong>Email:</strong> joeboywizz@gmail.com
+                  <strong>Email:</strong> {data.shipper.email}
                 </p>
                 <p>
-                  <strong>Phone:</strong> +2348029494195
+                  <strong>Phone:</strong> {data.shipper.phone}
                 </p>
                 <p>
-                  <strong>Address:</strong> Some Address Here
+                  <strong>Address:</strong> {data.shipper.address}
                 </p>
               </div>
             </div>
@@ -104,45 +114,40 @@ export default function Tracking() {
         </div>
 
         <div className="status__display">
-          <p>Shipment Status - In Transit</p>
+          <p>Shipment Status - {data.status[data.status.length - 1].status}</p>
         </div>
 
         <div className="shipment__info">
           <h2>Shipment Information</h2>
 
-          <div className="shipment__information">
-            <div className="info__piece">
-              <strong>Shipment Type</strong>
+          <div
+            className="shipment__information"
+            style={{
+              gridTemplateColumns: isTablet
+                ? "auto auto auto"
+                : isMobile
+                ? "auto auto"
+                : "auto auto auto auto",
+            }}
+          >
+            {[
+              { label: "Shipment Type", value: data.shipment.type },
+              { label: "Shipment Mode", value: data.shipment.mode },
+              { label: "Total Packages", value: data.shipment.packages },
+              { label: "Pacakges Weight", value: `${data.shipment.weight} kg` },
+              { label: "Carrier", value: data.shipment.carrier },
+              { label: "Courier", value: data.shipment.courier },
+              { label: "Pickup Time", value: data.shipment.mode },
+              { label: "", value: data.shipment.mode },
+            ].map((info, ind) => (
+              <div key={ind} className="info__piece">
+                <strong>{info.label}</strong>
 
-              <p>Type</p>
-            </div>
+                <p>Type</p>
+              </div>
+            ))}
             <div className="info__piece">
-              <strong>Shipment Mode</strong>
-
-              <p>Mode</p>
-            </div>
-            <div className="info__piece">
-              <strong>Total Packages</strong>
-
-              <p>Packages</p>
-            </div>
-            <div className="info__piece">
-              <strong>Pacakges Weight</strong>
-
-              <p>Weight</p>
-            </div>
-            <div className="info__piece">
-              <strong>Carrier</strong>
-
-              <p>Carrier</p>
-            </div>
-            <div className="info__piece">
-              <strong>Courier</strong>
-
-              <p>Courier</p>
-            </div>
-            <div className="info__piece">
-              <strong>Pickup Time</strong>
+              <strong></strong>
 
               <p>Time</p>
             </div>

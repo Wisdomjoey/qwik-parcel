@@ -11,6 +11,8 @@
     "cra-template": "1.2.0",
     "emailjs": "^4.0.3",
     "framer-motion": "^12.4.1",
+    "jsbarcode": "^3.11.6",
+    "mapbox-gl": "^3.10.0",
     "next": "15.1.2",
     "react": "^19.0.0",
     "react-animations": "^1.0.0",

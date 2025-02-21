@@ -208,6 +208,13 @@
   border-collapse: collapse;
 }
 
+.tracking__bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 .packages__information table th:not(:last-child), .packages__information table td:not(:last-child) {
   border-right: 1px solid lightgray;
 }
