@@ -3,8 +3,9 @@ import bg from "../../assets/images/5229-min.jpg";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useRef } from "react";
 import JsBarcode from "jsbarcode";
-import ReactMapBoxGL from "react-mapbox-gl";
+// import ReactMapBoxGL from "react-mapbox-gl";
 import MapBoxGL from "mapbox-gl";
+import turf from "@turf/turf";
 
 export default function Tracking({ data, error }) {
   const mapConRef = useRef(null);
@@ -17,9 +18,9 @@ export default function Tracking({ data, error }) {
   const isTablet = useMediaQuery({
     query: "(max-width: 768px)",
   });
-  const Map = new MapBoxGL.Map({
-    accessToken: process.env.NEXT_PUBLIC_MAPBOX_KEY,
-  });
+  // const Map = new MapBoxGL.Map({
+  //   accessToken: process.env.NEXT_PUBLIC_MAPBOX_KEY,
+  // });
 
   const formatDT = (date) => {
     return new Date(date).toLocaleString();
@@ -30,16 +31,205 @@ export default function Tracking({ data, error }) {
   };
 
   useEffect(() => {
+    const loadMap = async () => {
+      try {
+        const locations = [
+          ...(data.shipment.destination
+            ? [encodeURIComponent(data.shipment.destination)]
+            : []),
+          ...(data.status ?? []).map((stat) =>
+            encodeURIComponent(stat.location)
+          ),
+        ];
+
+        if (locations.length > 0) {
+          const accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
+          MapBoxGL.accessToken = accessToken;
+
+          const centers = [];
+
+          for (let i = 0; i < locations.length; i++) {
+            const location = locations[i];
+
+            const res = await fetch(
+              `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${accessToken}`
+            );
+
+            if (res.ok) {
+              const data = await res.json();
+
+              centers.push(data.features[0].center);
+            }
+          }
+
+          const map = new MapBoxGL.Map({
+            container: mapConRef.current,
+            center: centers[centers.length - 1],
+            zoom: 10,
+          });
+
+          map.on("load", () => {
+            // Add Markers
+            centers.forEach((center) =>
+              new MapBoxGL.Marker().setLngLat(center).addTo(map)
+            );
+
+            // Add Routes
+            const coordinates = centers.join(";");
+            const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
+
+            fetch(url)
+              .then((response) => response.json())
+              .then((data) => {
+                const route = data.routes[0].geometry;
+
+                // Add the route to the map
+                map.addSource("route", {
+                  type: "geojson",
+                  data: {
+                    type: "Feature",
+                    properties: {},
+                    geometry: route,
+                  },
+                });
+
+                map.addLayer({
+                  id: "route",
+                  type: "line",
+                  source: "route",
+                  layout: {
+                    "line-join": "round",
+                    "line-cap": "round",
+                  },
+                  paint: {
+                    "line-color": "#888",
+                    "line-width": 8,
+                  },
+                });
+              });
+
+            // Animate Route
+            if (centers.length > 1) {
+              const coord1 = centers[centers.length - 2];
+              const coord2 = centers[centers.length - 1];
+              const route = {
+                type: "FeatureCollection",
+                features: [
+                  {
+                    type: "Feature",
+                    geometry: {
+                      type: "LineString",
+                      coordinates: [coord1, coord2],
+                    },
+                  },
+                ],
+              };
+
+              // A single point that animates along the route.
+              const point = {
+                type: "FeatureCollection",
+                features: [
+                  {
+                    type: "Feature",
+                    properties: {},
+                    geometry: {
+                      type: "Point",
+                      coordinates: coord1,
+                    },
+                  },
+                ],
+              };
+
+              // Number of steps to use in the arc and animation, more steps means
+              // a smoother arc and animation, but too many steps will result in a
+              // low frame rate
+              const steps = 500;
+              let counter = 0;
+
+              function animate() {
+                const start =
+                  route.features[0].geometry.coordinates[
+                    counter >= steps ? counter - 1 : counter
+                  ];
+                const end =
+                  route.features[0].geometry.coordinates[
+                    counter >= steps ? counter : counter + 1
+                  ];
+                if (!start || !end) return;
+
+                // Update point geometry to a new position based on counter denoting
+                // the index to access the arc
+                point.features[0].geometry.coordinates =
+                  route.features[0].geometry.coordinates[counter];
+
+                // Calculate the bearing to ensure the icon is rotated to match the route arc
+                // The bearing is calculated between the current point and the next point, except
+                // at the end of the arc, which uses the previous point and the current point
+                point.features[0].properties.bearing = turf.bearing(
+                  turf.point(start),
+                  turf.point(end)
+                );
+
+                // Update the source with this new data
+                map.getSource("point").setData(point);
+
+                // Request the next frame of animation as long as the end has not been reached
+                if (counter < steps) {
+                  requestAnimationFrame(function () {
+                    animate(counter + 1);
+                  });
+                }
+              }
+
+              // Add Data to Map
+              map.addSource("route", {
+                type: "geojson",
+                data: route,
+              });
+
+              map.addSource("point", {
+                type: "geojson",
+                data: point,
+              });
+
+              map.addLayer({
+                id: "route",
+                source: "route",
+                type: "line",
+                paint: {
+                  "line-width": 2,
+                  "line-color": "#007cbf",
+                },
+              });
+
+              map.addLayer({
+                id: "point",
+                source: "point",
+                type: "symbol",
+                layout: {
+                  "icon-image": "airport",
+                  "icon-size": 1.5,
+                  "icon-rotate": ["get", "bearing"],
+                  "icon-rotation-alignment": "map",
+                  "icon-allow-overlap": true,
+                  "icon-ignore-placement": true,
+                },
+              });
+
+              // Start the animation
+              animate();
+            }
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     if (data?.barcode) {
       JsBarcode("#barcode", data.tracking_no);
 
-      MapBoxGL.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
-
-      const map = new MapBoxGL.Map({ container: mapConRef.current });
-
-      map.on('load', () => {
-        
-      })
+      loadMap();
     }
   }, [data]);
 
