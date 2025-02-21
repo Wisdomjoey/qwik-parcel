@@ -82,192 +82,192 @@ export default function Tracking({ data, error }) {
             );
 
             // Add Routes
-            const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
-            const c2 = new MapBoxGL.LngLat(-77.03, 38.91);
-            const distance = c1.distanceTo(c2);
+            // const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
+            // const c2 = new MapBoxGL.LngLat(-77.03, 38.91);
+            // const distance = c1.distanceTo(c2);
 
-            if ((distance / 1000).toFixed(2) < 25000) {
-              const coordinates = [centers[0], centers[centers.length - 1]]
-                .map((center) => center.join(","))
-                .join(";");
-              const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
+            // if ((distance / 1000).toFixed(2) < 25000) {
+            //   const coordinates = [centers[0], centers[centers.length - 1]]
+            //     .map((center) => center.join(","))
+            //     .join(";");
+            //   const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
 
-              const res = await fetch(url);
+            //   const res = await fetch(url);
 
-              if (!res.ok) return setErr("Invalid Location");
+            //   if (!res.ok) return setErr("Invalid Location");
 
-              const routeData = await res.json();
-              const route = routeData.routes[0].geometry;
+            //   const routeData = await res.json();
+            //   const route = routeData.routes[0].geometry;
 
-              // Add the route to the map
-              map.addSource("route", {
-                type: "geojson",
-                data: {
-                  type: "Feature",
-                  properties: {},
-                  geometry: route,
-                },
-              });
+            //   // Add the route to the map
+            //   map.addSource("route", {
+            //     type: "geojson",
+            //     data: {
+            //       type: "Feature",
+            //       properties: {},
+            //       geometry: route,
+            //     },
+            //   });
 
-              map.addLayer({
-                id: "route",
-                type: "line",
-                source: "route",
-                layout: {
-                  "line-join": "round",
-                  "line-cap": "round",
-                },
-                paint: {
-                  "line-color": "#888",
-                  "line-width": 8,
-                },
-              });
-            }
-          });
+            //   map.addLayer({
+            //     id: "route",
+            //     type: "line",
+            //     source: "route",
+            //     layout: {
+            //       "line-join": "round",
+            //       "line-cap": "round",
+            //     },
+            //     paint: {
+            //       "line-color": "#888",
+            //       "line-width": 8,
+            //     },
+            //   });
+            // }
 
-          // Animate Route
-          if (centers.length > 1) {
-            const coord1 = centers[centers.length - 2];
-            const coord2 = centers[centers.length - 1];
-            const route = {
-              type: "FeatureCollection",
-              features: [
-                {
-                  type: "Feature",
-                  geometry: {
-                    type: "LineString",
-                    coordinates: [coord1, coord2],
-                  },
-                },
-              ],
-            };
-
-            // A single point that animates along the route.
-            const point = {
-              type: "FeatureCollection",
-              features: [
-                {
-                  type: "Feature",
-                  properties: {},
-                  geometry: {
-                    type: "Point",
-                    coordinates: coord1,
-                  },
-                },
-              ],
-            };
-
-            // Number of steps to use in the arc and animation, more steps means
-            // a smoother arc and animation, but too many steps will result in a
-            // low frame rate
-            let counter = 0;
-            if (!route.features[0] || !route.features[0].geometry) {
-              console.error("Invalid route data");
-              return setErr("Invalid route data");
-            }
-
-            const lineString = route.features[0].geometry;
-            const start = lineString.coordinates[0];
-            const end = lineString.coordinates[1];
-            const step = turf.length(lineString) / 500;
-
-            function animate() {
-              if (counter >= turf.length(lineString)) {
-                // Animation has reached the end
-                return;
-              }
-
-              // Update the moving point
-              const alongPoint = turf.along(lineString, counter);
-
-              point.features[0].geometry.coordinates =
-                alongPoint.geometry.coordinates;
-
-              // Calculate and update the midpoint
-              const remainingLine = turf.lineSlice(
-                alongPoint,
-                turf.point(end),
-                lineString
-              );
-              const midpoint = turf.along(
-                remainingLine,
-                turf.length(remainingLine) / 2
-              );
-
-              map.getSource("midpoint").setData({
+            // Animate Route
+            if (centers.length > 1) {
+              const coord1 = centers[centers.length - 2];
+              const coord2 = centers[centers.length - 1];
+              const route = {
                 type: "FeatureCollection",
                 features: [
                   {
                     type: "Feature",
                     geometry: {
-                      type: "Point",
-                      coordinates: midpoint.geometry.coordinates,
+                      type: "LineString",
+                      coordinates: [coord1, coord2],
                     },
                   },
                 ],
+              };
+
+              // A single point that animates along the route.
+              const point = {
+                type: "FeatureCollection",
+                features: [
+                  {
+                    type: "Feature",
+                    properties: {},
+                    geometry: {
+                      type: "Point",
+                      coordinates: coord1,
+                    },
+                  },
+                ],
+              };
+
+              // Number of steps to use in the arc and animation, more steps means
+              // a smoother arc and animation, but too many steps will result in a
+              // low frame rate
+              let counter = 0;
+              if (!route.features[0] || !route.features[0].geometry) {
+                console.error("Invalid route data");
+                return setErr("Invalid route data");
+              }
+
+              const lineString = route.features[0].geometry;
+              const start = lineString.coordinates[0];
+              const end = lineString.coordinates[1];
+              const step = turf.length(lineString) / 500;
+
+              function animate() {
+                if (counter >= turf.length(lineString)) {
+                  // Animation has reached the end
+                  return;
+                }
+
+                // Update the moving point
+                const alongPoint = turf.along(lineString, counter);
+
+                point.features[0].geometry.coordinates =
+                  alongPoint.geometry.coordinates;
+
+                // Calculate and update the midpoint
+                const remainingLine = turf.lineSlice(
+                  alongPoint,
+                  turf.point(end),
+                  lineString
+                );
+                const midpoint = turf.along(
+                  remainingLine,
+                  turf.length(remainingLine) / 2
+                );
+
+                map.getSource("midpoint").setData({
+                  type: "FeatureCollection",
+                  features: [
+                    {
+                      type: "Feature",
+                      geometry: {
+                        type: "Point",
+                        coordinates: midpoint.geometry.coordinates,
+                      },
+                    },
+                  ],
+                });
+
+                // Calculate the bearing to ensure the icon is rotated to match the route arc
+                // The bearing is calculated between the current point and the next point, except
+                // at the end of the arc, which uses the previous point and the current point
+                point.features[0].properties.bearing = turf.bearing(
+                  turf.point(start),
+                  turf.point(end)
+                );
+
+                // Update the source with this new data
+                map.getSource("point").setData(point);
+
+                counter = counter + step;
+                requestAnimationFrame(animate);
+              }
+
+              // Add Data to Map
+              map.addSource("midpoint", {
+                type: "geojson",
+                data: {
+                  type: "FeatureCollection",
+                  features: [],
+                },
               });
 
-              // Calculate the bearing to ensure the icon is rotated to match the route arc
-              // The bearing is calculated between the current point and the next point, except
-              // at the end of the arc, which uses the previous point and the current point
-              point.features[0].properties.bearing = turf.bearing(
-                turf.point(start),
-                turf.point(end)
-              );
+              map.addSource("route", {
+                type: "geojson",
+                data: route,
+              });
 
-              // Update the source with this new data
-              map.getSource("point").setData(point);
+              map.addSource("point", {
+                type: "geojson",
+                data: point,
+              });
 
-              counter = counter + step;
-              requestAnimationFrame(animate);
+              map.addLayer({
+                id: "route",
+                source: "route",
+                type: "line",
+                paint: {
+                  "line-width": 2,
+                  "line-color": "#007cbf",
+                },
+              });
+
+              map.addLayer({
+                id: "point",
+                source: "point",
+                type: "symbol",
+                layout: {
+                  "icon-image": "airport",
+                  "icon-size": 1.5,
+                  "icon-rotate": ["get", "bearing"],
+                  "icon-rotation-alignment": "map",
+                  "icon-allow-overlap": true,
+                  "icon-ignore-placement": true,
+                },
+              });
+
+              // Start the animation
+              animate();
             }
-
-            // Add Data to Map
-            map.addSource("midpoint", {
-              type: "geojson",
-              data: {
-                type: "FeatureCollection",
-                features: [],
-              },
-            });
-
-            map.addSource("route", {
-              type: "geojson",
-              data: route,
-            });
-
-            map.addSource("point", {
-              type: "geojson",
-              data: point,
-            });
-
-            map.addLayer({
-              id: "route",
-              source: "route",
-              type: "line",
-              paint: {
-                "line-width": 2,
-                "line-color": "#007cbf",
-              },
-            });
-
-            map.addLayer({
-              id: "point",
-              source: "point",
-              type: "symbol",
-              layout: {
-                "icon-image": "airport",
-                "icon-size": 1.5,
-                "icon-rotate": ["get", "bearing"],
-                "icon-rotation-alignment": "map",
-                "icon-allow-overlap": true,
-                "icon-ignore-placement": true,
-              },
-            });
-
-            // Start the animation
-            animate();
-          }
+          });
         }
       } catch (error) {
         console.error(error);
