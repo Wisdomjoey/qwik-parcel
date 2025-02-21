@@ -1,11 +1,5 @@
-import React from "react";
+import Loader from "../components/Loader";
 
 export default function Loading() {
-  return (
-    <div id="loader" className="">
-      <div className="cb"></div>
-      <div className="cb"></div>
-      <div className="cb"></div>
-    </div>
-  );
+  return <Loader />;
 }
