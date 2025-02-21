@@ -72,6 +72,7 @@ export default function Tracking({ data, error }) {
           const map = new MapBoxGL.Map({
             container: mapConRef.current,
             center: centers[centers.length - 1],
+            style: "mapbox://styles/mapbox/streets-v12",
             zoom: 10,
           });
 
@@ -86,7 +87,7 @@ export default function Tracking({ data, error }) {
             //   { source: 'my-source', id: 'some-id' },
             //   { hover: false }
             // );
-          
+
             // map.addInteraction({
             //   id: 'hover-interaction',
             //   layers: ['my-layer'],
@@ -106,47 +107,47 @@ export default function Tracking({ data, error }) {
             // });
 
             // Add Routes
-            // const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
-            // const c2 = new MapBoxGL.LngLat(-77.03, 38.91);
-            // const distance = c1.distanceTo(c2);
+            const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
+            const c2 = new MapBoxGL.LngLat(-77.03, 38.91);
+            const distance = c1.distanceTo(c2);
+console.log(distance)
+            if ((distance / 1000).toFixed(2) < 25000) {
+              const coordinates = [centers[0], centers[centers.length - 1]]
+                .map((center) => center.join(","))
+                .join(";");
+              const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
 
-            // if ((distance / 1000).toFixed(2) < 25000) {
-            //   const coordinates = [centers[0], centers[centers.length - 1]]
-            //     .map((center) => center.join(","))
-            //     .join(";");
-            //   const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
+              const res = await fetch(url);
 
-            //   const res = await fetch(url);
+              if (!res.ok) return setErr("Invalid Location");
 
-            //   if (!res.ok) return setErr("Invalid Location");
+              const routeData = await res.json();
+              const route = routeData.routes[0].geometry;
 
-            //   const routeData = await res.json();
-            //   const route = routeData.routes[0].geometry;
+              // Add the route to the map
+              map.addSource("route", {
+                type: "geojson",
+                data: {
+                  type: "Feature",
+                  properties: {},
+                  geometry: route,
+                },
+              });
 
-            //   // Add the route to the map
-            //   map.addSource("route", {
-            //     type: "geojson",
-            //     data: {
-            //       type: "Feature",
-            //       properties: {},
-            //       geometry: route,
-            //     },
-            //   });
-
-            //   map.addLayer({
-            //     id: "route",
-            //     type: "line",
-            //     source: "route",
-            //     layout: {
-            //       "line-join": "round",
-            //       "line-cap": "round",
-            //     },
-            //     paint: {
-            //       "line-color": "#888",
-            //       "line-width": 8,
-            //     },
-            //   });
-            // }
+              map.addLayer({
+                id: "route",
+                type: "line",
+                source: "route",
+                layout: {
+                  "line-join": "round",
+                  "line-cap": "round",
+                },
+                paint: {
+                  "line-color": "#888",
+                  "line-width": 8,
+                },
+              });
+            }
 
             // Animate Route
             if (centers.length > 1) {
