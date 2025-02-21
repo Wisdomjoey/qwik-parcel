@@ -85,11 +85,13 @@ export default function Tracking({ data, error }) {
             const coordinates = centers
               .map((center) => center.join(","))
               .join(";");
+              console.log(coordinates)
             const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
 
             fetch(url)
               .then((response) => response.json())
               .then((data) => {
+                console.log(data)
                 const route = data.routes[0].geometry;
 
                 // Add the route to the map
