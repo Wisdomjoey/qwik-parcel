@@ -135,8 +135,8 @@ export default function Tracking({ data, error }) {
             const cd1 = centers[0];
             const cd2 = centers[centers.length - 1];
             const waypoints = divideRoute(cd1, cd2);
-console.log(waypoints)
-            if (waypoints.length > 25) return;
+
+            // if (waypoints.length > 25) return;
 
             for (let i = 0; i < waypoints.length - 1; i++) {
               const start = waypoints[i];
