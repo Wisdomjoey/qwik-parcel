@@ -82,28 +82,28 @@ export default function Tracking({ data, error }) {
             );
 
             map.addControl(new MapBoxGL.NavigationControl());
-            map.setFeatureState(
-              { source: 'my-source', id: 'some-id' },
-              { hover: false }
-            );
+            // map.setFeatureState(
+            //   { source: 'my-source', id: 'some-id' },
+            //   { hover: false }
+            // );
           
-            map.addInteraction({
-              id: 'hover-interaction',
-              layers: ['my-layer'],
-              type: 'hover',
-              onHover: (e) => {
-                map.setFeatureState(
-                  { source: 'my-source', id: e.features[0].id },
-                  { hover: true }
-                );
-              },
-              onLeave: (e) => {
-                map.setFeatureState(
-                  { source: 'my-source', id: e.features[0].id },
-                  { hover: false }
-                );
-              }
-            });
+            // map.addInteraction({
+            //   id: 'hover-interaction',
+            //   layers: ['my-layer'],
+            //   type: 'hover',
+            //   onHover: (e) => {
+            //     map.setFeatureState(
+            //       { source: 'my-source', id: e.features[0].id },
+            //       { hover: true }
+            //     );
+            //   },
+            //   onLeave: (e) => {
+            //     map.setFeatureState(
+            //       { source: 'my-source', id: e.features[0].id },
+            //       { hover: false }
+            //     );
+            //   }
+            // });
 
             // Add Routes
             // const c1 = new MapBoxGL.LngLat(-122.42, 37.78);
