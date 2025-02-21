@@ -31,6 +31,30 @@ export default function Tracking({ data, error }) {
     return new Date(date).toLocaleDateString();
   };
 
+  const divideRoute = (start, end) => {
+    const maxDistance = 10000;
+    const line = turf.lineString([start, end]);
+    const totalDistance = turf.length(line, { units: "kilometers" });
+
+    if (totalDistance <= maxDistance) {
+      return [start, end];
+    }
+
+    const numSegments = Math.ceil(totalDistance / maxDistance);
+    const points = [start];
+
+    for (let i = 1; i < numSegments; i++) {
+      const along = turf.along(line, (i / numSegments) * totalDistance, {
+        units: "kilometers",
+      });
+      points.push(along.geometry.coordinates);
+    }
+
+    points.push(end);
+
+    return points;
+  };
+
   useEffect(() => {
     if (err) return;
 
@@ -109,15 +133,14 @@ export default function Tracking({ data, error }) {
             // Add Routes
             const cd1 = centers[0];
             const cd2 = centers[centers.length - 1];
-            const c1 = new MapBoxGL.LngLat(cd1[0], cd1[1]);
-            const c2 = new MapBoxGL.LngLat(cd2[0], cd2[1]);
-            const distance = c1.distanceTo(c2);
-console.log(distance)
-            if ((distance / 1000).toFixed(2) < 25000) {
-              const coordinates = [cd1, cd2]
-                .map((center) => center.join(","))
-                .join(";");
-              const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
+            const waypoints = divideRoute(cd1, cd2);
+
+            if (waypoints.length > 25) return;
+
+            for (let i = 0; i < waypoints.length - 1; i++) {
+              const start = waypoints[i];
+              const end = waypoints[i + 1];
+              const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
 
               const res = await fetch(url);
 
