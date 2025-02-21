@@ -141,7 +141,7 @@ export default function Tracking({ data, error }) {
               const start = waypoints[i];
               const end = waypoints[i + 1];
               console.log(start)
-              console.log(e)
+              console.log(end)
               const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
 
               const res = await fetch(url);
