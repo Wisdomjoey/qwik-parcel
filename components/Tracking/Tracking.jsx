@@ -140,6 +140,8 @@ export default function Tracking({ data, error }) {
             for (let i = 0; i < waypoints.length - 1; i++) {
               const start = waypoints[i];
               const end = waypoints[i + 1];
+              console.log(start)
+              console.log(e)
               const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
 
               const res = await fetch(url);
@@ -147,6 +149,7 @@ export default function Tracking({ data, error }) {
               if (!res.ok) return setErr("Invalid Location");
 
               const routeData = await res.json();
+              console.log(routeData)
               const route = routeData.routes[0].geometry;
 
               // Add the route to the map
