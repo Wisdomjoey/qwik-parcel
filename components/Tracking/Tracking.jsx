@@ -166,7 +166,7 @@ export default function Tracking({ data, error }) {
               const route = routeData.routes[0].geometry;
 
               // Add the route to the map
-              map.addSource("route", {
+              map.addSource(`route${i}`, {
                 type: "geojson",
                 data: {
                   type: "Feature",
@@ -176,9 +176,9 @@ export default function Tracking({ data, error }) {
               });
 
               map.addLayer({
-                id: "route",
+                id: `route${i}`,
                 type: "line",
-                source: "route",
+                source: `route${i}`,
                 layout: {
                   "line-join": "round",
                   "line-cap": "round",
