@@ -212,7 +212,7 @@ export default function Tracking({ data, error }) {
                 map.getSource("point").setData(point);
 
                 counter = counter + step;
-                requestAnimationFrame(frame);
+                requestAnimationFrame(animate);
               }
 
               // Add Data to Map
