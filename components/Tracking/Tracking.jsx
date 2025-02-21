@@ -112,7 +112,7 @@ export default function Tracking({ data, error }) {
             const c1 = new MapBoxGL.LngLat(cd1[0], cd1[1]);
             const c2 = new MapBoxGL.LngLat(cd2[0], cd2[1]);
             const distance = c1.distanceTo(c2);
-
+console.log(distance)
             if ((distance / 1000).toFixed(2) < 25000) {
               const coordinates = [cd1, cd2]
                 .map((center) => center.join(","))
