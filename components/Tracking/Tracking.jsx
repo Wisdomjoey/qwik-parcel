@@ -82,7 +82,9 @@ export default function Tracking({ data, error }) {
             );
 
             // Add Routes
-            const coordinates = centers.join(";");
+            const coordinates = centers
+              .map((center) => center.join(","))
+              .join(";");
             const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${accessToken}`;
 
             fetch(url)
