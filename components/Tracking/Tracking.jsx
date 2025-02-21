@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import JsBarcode from "jsbarcode";
 // import ReactMapBoxGL from "react-mapbox-gl";
 import MapBoxGL from "mapbox-gl";
+import polyline from "@mapbox/polyline";
 import * as turf from "@turf/turf";
 
 export default function Tracking({ data, error }) {
@@ -140,16 +141,28 @@ export default function Tracking({ data, error }) {
             for (let i = 0; i < waypoints.length - 1; i++) {
               const start = waypoints[i];
               const end = waypoints[i + 1];
-              console.log(start)
-              console.log(end)
-              const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
+              const url = `https://api.mapbox.com/matching/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
 
               const res = await fetch(url);
 
-              if (!res.ok) return setErr("Invalid Location");
+              if (!res.ok) return setErr("Something went wrong");
 
-              const routeData = await res.json();
-              console.log(routeData)
+              const mapData = await res.json();
+              console.log(mapData.routes[0].geometry)
+              const decodedCoordinates = polyline.decode(
+                mapData.routes[0].geometry
+              );
+              console.log(decodedCoordinates)
+              const cod1 = decodedCoordinates[0].join(",");
+              const cod2 =
+                decodedCoordinates[decodedCoordinates.length - 1].join(",");
+
+              const url1 = `https://api.mapbox.com/directions/v5/mapbox/driving/${cod1};${cod2}?geometries=geojson&access_token=${accessToken}`;
+              const res1 = await fetch(url1);
+
+              if (!res1.ok) return setErr("Invalid Location");
+
+              const routeData = await res1.json();
               const route = routeData.routes[0].geometry;
 
               // Add the route to the map
