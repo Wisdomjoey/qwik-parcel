@@ -33,7 +33,7 @@ export default function Tracking({ data, error }) {
   };
 
   const divideRoute = (start, end) => {
-    const maxDistance = 5;
+    const maxDistance = 2;
     const line = turf.lineString([start, end]);
     const totalDistance = turf.length(line, { units: "kilometers" });
 
