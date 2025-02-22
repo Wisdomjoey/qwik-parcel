@@ -56,7 +56,7 @@ export default function About() {
                                 wordSpacing: isMobile && 0
                             }}
                         >
-                            We at Boblink World Wide Logistics  have mastered the act of Logistics over 
+                            We at Qwik Parcel have mastered the act of Logistics over 
                             the years and built a long connection chain of partnership across the globe with our 
                             remarkable services .  We are offer  Air freight , Sea freight and Land freight services. 
                             To ensure proper and adequate delivery of goods and consignments, we deploy sophisticated 

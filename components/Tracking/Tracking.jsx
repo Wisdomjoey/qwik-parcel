@@ -62,9 +62,9 @@ export default function Tracking({ data, error }) {
     const loadMap = async () => {
       try {
         const locations = [
-          ...(data.shipment.destination
-            ? [encodeURIComponent(data.shipment.destination)]
-            : []),
+          // ...(data.shipment.destination
+          //   ? [encodeURIComponent(data.shipment.destination)]
+          //   : []),
           ...(data.status ?? []).map((stat) =>
             encodeURIComponent(stat.location)
           ),
@@ -193,7 +193,7 @@ export default function Tracking({ data, error }) {
             // Animate Route
             if (centers.length > 1) {
               const coord1 = centers[centers.length - 2];
-              const coord2 = centers[centers.length - 1];
+              // const coord2 = centers[centers.length - 1];
               const route = {
                 type: "FeatureCollection",
                 features: [
@@ -201,7 +201,7 @@ export default function Tracking({ data, error }) {
                     type: "Feature",
                     geometry: {
                       type: "LineString",
-                      coordinates: [coord1, coord2],
+                      coordinates: centers,
                     },
                   },
                 ],
@@ -399,8 +399,13 @@ export default function Tracking({ data, error }) {
           </h2>
 
           <div className="tracking__bio">
+            {data.logo && <img alt="Logo" src={data.logo} />}
+
             {data?.barcode ? (
-              <svg id="barcode" style={{ width: "100%" }}></svg>
+              <svg
+                id="barcode"
+                style={{ width: "100%", maxWidth: "35rem" }}
+              ></svg>
             ) : (
               <h3>JZ-OFRVNORROE5678-CARGO</h3>
             )}
@@ -454,6 +459,8 @@ export default function Tracking({ data, error }) {
             </p>
           </div>
 
+          <div className="pkg__image"></div>
+
           <div className="shipment__info">
             <h2>Shipment Information</h2>
 
@@ -461,9 +468,9 @@ export default function Tracking({ data, error }) {
               className="shipment__information"
               style={{
                 gridTemplateColumns: isMobile
-                  ? "auto auto"
+                  ? "auto"
                   : isTablet
-                  ? "auto auto auto"
+                  ? "auto auto"
                   : "auto auto auto auto",
               }}
             >
@@ -502,6 +509,11 @@ export default function Tracking({ data, error }) {
                   value: data.shipment.delivery_date
                     ? formatD(data.shipment.delivery_date)
                     : "---",
+                },
+                { label: "Price", value: data.shipment.price ?? "---" },
+                {
+                  label: "Payment Method",
+                  value: data.shipment.pay_method ?? "---",
                 },
                 { label: "Comment", value: data.shipment.comment ?? "---" },
               ].map((info, ind) => (

@@ -84,7 +84,7 @@ export default function Contact() {
           </h1>
           <input
             name="to_email"
-            value="boblinkworldwidelogistics1@gmail.com"
+            value="support@qwikparcel.com"
             style={{
               display: "none",
             }}
