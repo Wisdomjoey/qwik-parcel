@@ -231,61 +231,61 @@ export default function Tracking({ data, error }) {
                 return setErr("Invalid route data");
               }
 
-              const lineString = route.features[0].geometry;
-              const start = lineString.coordinates[0];
-              const end = lineString.coordinates[1];
-              const step = turf.length(lineString) / 500;
+              // const lineString = route.features[0].geometry;
+              // const start = lineString.coordinates[0];
+              // const end = lineString.coordinates[1];
+              // const step = turf.length(lineString) / 500;
 
-              function animate() {
-                if (counter >= turf.length(lineString)) {
-                  // Animation has reached the end
-                  return;
-                }
+              // function animate() {
+              //   if (counter >= turf.length(lineString)) {
+              //     // Animation has reached the end
+              //     return;
+              //   }
 
-                // Update the moving point
-                const alongPoint = turf.along(lineString, counter);
+              //   // Update the moving point
+              //   const alongPoint = turf.along(lineString, counter);
 
-                point.features[0].geometry.coordinates =
-                  alongPoint.geometry.coordinates;
+              //   point.features[0].geometry.coordinates =
+              //     alongPoint.geometry.coordinates;
 
-                // Calculate and update the midpoint
-                const remainingLine = turf.lineSlice(
-                  alongPoint,
-                  turf.point(end),
-                  lineString
-                );
-                const midpoint = turf.along(
-                  remainingLine,
-                  turf.length(remainingLine) / 2
-                );
+              //   // Calculate and update the midpoint
+              //   const remainingLine = turf.lineSlice(
+              //     alongPoint,
+              //     turf.point(end),
+              //     lineString
+              //   );
+              //   const midpoint = turf.along(
+              //     remainingLine,
+              //     turf.length(remainingLine) / 2
+              //   );
 
-                map.getSource("midpoint").setData({
-                  type: "FeatureCollection",
-                  features: [
-                    {
-                      type: "Feature",
-                      geometry: {
-                        type: "Point",
-                        coordinates: midpoint.geometry.coordinates,
-                      },
-                    },
-                  ],
-                });
+              //   map.getSource("midpoint").setData({
+              //     type: "FeatureCollection",
+              //     features: [
+              //       {
+              //         type: "Feature",
+              //         geometry: {
+              //           type: "Point",
+              //           coordinates: midpoint.geometry.coordinates,
+              //         },
+              //       },
+              //     ],
+              //   });
 
-                // Calculate the bearing to ensure the icon is rotated to match the route arc
-                // The bearing is calculated between the current point and the next point, except
-                // at the end of the arc, which uses the previous point and the current point
-                point.features[0].properties.bearing = turf.bearing(
-                  turf.point(start),
-                  turf.point(end)
-                );
+              //   // Calculate the bearing to ensure the icon is rotated to match the route arc
+              //   // The bearing is calculated between the current point and the next point, except
+              //   // at the end of the arc, which uses the previous point and the current point
+              //   point.features[0].properties.bearing = turf.bearing(
+              //     turf.point(start),
+              //     turf.point(end)
+              //   );
 
-                // Update the source with this new data
-                map.getSource("point").setData(point);
+              //   // Update the source with this new data
+              //   map.getSource("point").setData(point);
 
-                counter = counter + step;
-                requestAnimationFrame(animate);
-              }
+              //   counter = counter + step;
+              //   requestAnimationFrame(animate);
+              // }
 
               // Add Data to Map
               map.addSource("midpoint", {
@@ -331,7 +331,7 @@ export default function Tracking({ data, error }) {
               });
 
               // Start the animation
-              animate();
+              // animate();
             }
           });
         }
