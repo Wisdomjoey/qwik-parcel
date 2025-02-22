@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import JsBarcode from "jsbarcode";
 // import ReactMapBoxGL from "react-mapbox-gl";
 import MapBoxGL from "mapbox-gl";
-import polyline from "@mapbox/polyline";
+// import polyline from "@mapbox/polyline";
 import * as turf from "@turf/turf";
 
 export default function Tracking({ data, error }) {
@@ -32,29 +32,29 @@ export default function Tracking({ data, error }) {
     return new Date(date).toLocaleDateString();
   };
 
-  const divideRoute = (start, end) => {
-    const maxDistance = 2;
-    const line = turf.lineString([start, end]);
-    const totalDistance = turf.length(line, { units: "kilometers" });
+  // const divideRoute = (start, end) => {
+  //   const maxDistance = 2;
+  //   const line = turf.lineString([start, end]);
+  //   const totalDistance = turf.length(line, { units: "kilometers" });
 
-    if (totalDistance <= maxDistance) {
-      return [start, end];
-    }
+  //   if (totalDistance <= maxDistance) {
+  //     return [start, end];
+  //   }
 
-    const numSegments = Math.ceil(totalDistance / maxDistance);
-    const points = [start];
+  //   const numSegments = Math.ceil(totalDistance / maxDistance);
+  //   const points = [start];
 
-    for (let i = 1; i < numSegments; i++) {
-      const along = turf.along(line, (i / numSegments) * totalDistance, {
-        units: "kilometers",
-      });
-      points.push(along.geometry.coordinates);
-    }
+  //   for (let i = 1; i < numSegments; i++) {
+  //     const along = turf.along(line, (i / numSegments) * totalDistance, {
+  //       units: "kilometers",
+  //     });
+  //     points.push(along.geometry.coordinates);
+  //   }
 
-    points.push(end);
+  //   points.push(end);
 
-    return points;
-  };
+  //   return points;
+  // };
 
   useEffect(() => {
     if (err) return;
@@ -131,64 +131,64 @@ export default function Tracking({ data, error }) {
             //   }
             // });
 
-            // Add Routes
-            const cd1 = centers[0];
-            const cd2 = centers[centers.length - 1];
-            const waypoints = divideRoute(cd1, cd2);
+            // // Add Routes
+            // const cd1 = centers[0];
+            // const cd2 = centers[centers.length - 1];
+            // const waypoints = divideRoute(cd1, cd2);
 
-            // if (waypoints.length > 25) return;
+            // // if (waypoints.length > 25) return;
 
-            for (let i = 0; i < waypoints.length - 1; i++) {
-              const start = waypoints[i];
-              const end = waypoints[i + 1];
-              const url = `https://api.mapbox.com/matching/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
+            // for (let i = 0; i < waypoints.length - 1; i++) {
+            //   const start = waypoints[i];
+            //   const end = waypoints[i + 1];
+            //   const url = `https://api.mapbox.com/matching/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&access_token=${accessToken}`;
 
-              const res = await fetch(url);
+            //   const res = await fetch(url);
 
-              if (!res.ok) return setErr("Something went wrong");
+            //   if (!res.ok) return setErr("Something went wrong");
 
-              const mapData = await res.json();
-              console.log(mapData)
-              const decodedCoordinates = polyline.decode(
-                mapData.routes[0].geometry
-              );
-              console.log(decodedCoordinates)
-              const cod1 = decodedCoordinates[0].join(",");
-              const cod2 =
-                decodedCoordinates[decodedCoordinates.length - 1].join(",");
+            //   const mapData = await res.json();
+            //   console.log(mapData)
+            //   const decodedCoordinates = polyline.decode(
+            //     mapData.routes[0].geometry
+            //   );
+            //   console.log(decodedCoordinates)
+            //   const cod1 = decodedCoordinates[0].join(",");
+            //   const cod2 =
+            //     decodedCoordinates[decodedCoordinates.length - 1].join(",");
 
-              const url1 = `https://api.mapbox.com/directions/v5/mapbox/driving/${cod1};${cod2}?geometries=geojson&access_token=${accessToken}`;
-              const res1 = await fetch(url1);
+            //   const url1 = `https://api.mapbox.com/directions/v5/mapbox/driving/${cod1};${cod2}?geometries=geojson&access_token=${accessToken}`;
+            //   const res1 = await fetch(url1);
 
-              if (!res1.ok) return setErr("Invalid Location");
+            //   if (!res1.ok) return setErr("Invalid Location");
 
-              const routeData = await res1.json();
-              const route = routeData.routes[0].geometry;
+            //   const routeData = await res1.json();
+            //   const route = routeData.routes[0].geometry;
 
-              // Add the route to the map
-              map.addSource(`route${i}`, {
-                type: "geojson",
-                data: {
-                  type: "Feature",
-                  properties: {},
-                  geometry: route,
-                },
-              });
+            //   // Add the route to the map
+            //   map.addSource(`route${i}`, {
+            //     type: "geojson",
+            //     data: {
+            //       type: "Feature",
+            //       properties: {},
+            //       geometry: route,
+            //     },
+            //   });
 
-              map.addLayer({
-                id: `route${i}`,
-                type: "line",
-                source: `route${i}`,
-                layout: {
-                  "line-join": "round",
-                  "line-cap": "round",
-                },
-                paint: {
-                  "line-color": "#888",
-                  "line-width": 8,
-                },
-              });
-            }
+            //   map.addLayer({
+            //     id: `route${i}`,
+            //     type: "line",
+            //     source: `route${i}`,
+            //     layout: {
+            //       "line-join": "round",
+            //       "line-cap": "round",
+            //     },
+            //     paint: {
+            //       "line-color": "#888",
+            //       "line-width": 8,
+            //     },
+            //   });
+            // }
 
             // Animate Route
             if (centers.length > 1) {
