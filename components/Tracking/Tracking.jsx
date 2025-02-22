@@ -459,7 +459,9 @@ export default function Tracking({ data, error }) {
             </p>
           </div>
 
-          <div className="pkg__image"></div>
+          <div className="pkg__image">
+          <img alt="package" src={data.pkg_image} />
+          </div>
 
           <div className="shipment__info">
             <h2>Shipment Information</h2>
