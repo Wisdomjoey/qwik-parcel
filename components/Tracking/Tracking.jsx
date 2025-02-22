@@ -97,7 +97,7 @@ export default function Tracking({ data, error }) {
           const map = new MapBoxGL.Map({
             container: mapConRef.current,
             center: centers[centers.length - 1],
-            style: "mapbox://styles/mapbox/streets-v12",
+            style: "mapbox://styles/mapbox/navigation-day-v1",
             zoom: 10,
           });
 
