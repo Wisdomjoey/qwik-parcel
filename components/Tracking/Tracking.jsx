@@ -148,7 +148,7 @@ export default function Tracking({ data, error }) {
               if (!res.ok) return setErr("Something went wrong");
 
               const mapData = await res.json();
-              console.log(mapData.routes[0].geometry)
+              console.log(mapData)
               const decodedCoordinates = polyline.decode(
                 mapData.routes[0].geometry
               );
