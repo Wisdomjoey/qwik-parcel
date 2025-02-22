@@ -16,9 +16,9 @@ export default function Header() {
   const isTablet = useMediaQuery({
     query: "(max-width: 768px)",
   });
-  // const isMobile = useMediaQuery({
-  //   query: "(max-width: 480px)",
-  // });
+  const isMobile = useMediaQuery({
+    query: "(max-width: 480px)",
+  });
 
   // const handleCls = () => {
   //     setsub(prev => !prev);
@@ -136,7 +136,7 @@ export default function Header() {
       >
         <div
           className="hero__tracking"
-          style={{ flexBasis: isTablet ? "60%" : "45%" }}
+          style={{ flexBasis: isMobile ? "100%" : isTablet ? "60%" : "45%" }}
         >
           <form action="" onSubmit={handleSubmit}>
             <input
