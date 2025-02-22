@@ -418,17 +418,7 @@ export default function Navbar({ bg = false }) {
                     setDrawer(false);
                   }}
                 >
-                  <Nink href="#gallery">
-                    <Collections sx={{ fontSize: 20 }} />
-                    Gallery
-                  </Nink>
-                </li>
-                <li
-                  onClick={() => {
-                    setDrawer(false);
-                  }}
-                >
-                  <Nink href="#about">
+                  <Nink href="/#about">
                     <Info sx={{ fontSize: 20 }} />
                     About
                   </Nink>
