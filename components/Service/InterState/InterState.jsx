@@ -10,7 +10,7 @@ export default function InterState() {
 				img={ Inter }
 				head='Inter-State Delivery'
 				txt="
-					For shipping between states and to or from Nigeria, the shipping sector has a complex 
+					For shipping between states and to or from US, the shipping sector has a complex 
 					collection of rules, policies, and processes. Government laws, as well as categorization 
 					and labelling policies, are just a few of the issues you may face. Boblink World Wide 
 					Logistics will ensure that your shipment follow correct protocol from pickup to delivery, 
