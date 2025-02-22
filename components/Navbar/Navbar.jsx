@@ -18,7 +18,6 @@ import Link from "next/link";
 import {
   Build,
   Close,
-  Collections,
   ConnectingAirports,
   DirectionsBoat,
   DocumentScanner,
@@ -541,13 +540,7 @@ export default function Navbar({ bg = false }) {
                 </Nink>
               </li>
               <li>
-                <Nink href="#gallery">
-                  Gallery
-                  <span className="change"></span>
-                </Nink>
-              </li>
-              <li>
-                <Nink href="#about">
+                <Nink href="/#about">
                   About
                   <span className="change"></span>
                 </Nink>
