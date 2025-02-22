@@ -173,7 +173,8 @@
 
 .shipment__info,
 .packages__info,
-.map__display {
+.map__display,
+.pkg__image {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
@@ -221,6 +222,19 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+}
+
+.tracking__bio img {
+  width: 100%;
+  max-width: 12rem;
+}
+
+.pkg__image img {
+  width: 100%;
+  max-width: 50rem;
+  max-height: 40rem;
+  object-fit: contain;
 }
 
 .packages__information table th:not(:last-child),

@@ -14,7 +14,7 @@ export default function Procurement() {
                     most basic level. To put it another way, this section of the supply chain is responsible 
                     for acquiring raw materials, replacement components, auxiliary supplies, operating 
                     supplies, and other goods required for the production process to run smoothly. We at 
-                    Boblink World Wide Logistics can help you secure, pay and ship your desired 
+                    Qwik Parcel can help you secure, pay and ship your desired 
                     packages from the source to your doorstep with ease.
                 "
             />

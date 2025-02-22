@@ -12,12 +12,12 @@ import Link from "next/link";
 const service = [
   {
     head: "Freight Forwarding",
-    cap: "In Boblink, we provide our customers with Freight forwarding to arrival airport or door to door delivery - Fast, efficient and reliable chain - Cargo pickup - Direct airline and express services for more urgent consignment.",
+    cap: "At Qwik Parcel, we provide our customers with Freight forwarding to arrival airport or door to door delivery - Fast, efficient and reliable chain - Cargo pickup - Direct airline and express services for more urgent consignment.",
     link: "/services/forwarding",
   },
   {
     head: "Haulage Services",
-    cap: "Boblink's haulage services aims to provide value for money in a rather unsexy element of your business' transport. We have a fleet of our own vehicles and partner with agents on the continent to deliver great value for money for palletized shipping, full and part loads as well as same day delivery.",
+    cap: "Qwik Parcel's haulage services aims to provide value for money in a rather unsexy element of your business' transport. We have a fleet of our own vehicles and partner with agents on the continent to deliver great value for money for palletized shipping, full and part loads as well as same day delivery.",
     link: "/services/haulage",
   },
   {
@@ -27,7 +27,7 @@ const service = [
   },
   {
     head: "Dispatch Services",
-    cap: "At Boblink, our approach to courier services is unique. Our Courier partnership offer a cost effective, reliable, timeable courier service, baced up by the latest computer technology and online parcel track and trace facilities, making Boblink Couriers the ideal choice for small to medium sized businesses",
+    cap: "At Qwik Parcel, our approach to courier services is unique. Our Courier partnership offer a cost effective, reliable, timeable courier service, baced up by the latest computer technology and online parcel track and trace facilities, making Qwik Parcel Couriers the ideal choice for small to medium sized businesses",
     link: "/services/dispatch",
   },
 ];

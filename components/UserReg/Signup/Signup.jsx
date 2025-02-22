@@ -132,7 +132,7 @@ export default function Signup() {
 						style={{
 							fontSize: isMobile && '11px'
 						}}
-					>I agree to all Boblinks policy</p>
+					>I agree to all Qwik Parcel's policy</p>
 
 				</div>
 				<input

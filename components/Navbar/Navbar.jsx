@@ -263,9 +263,7 @@ export default function Navbar({ bg = false }) {
     {
       icon: (
         <a
-          href="https://wa.me/message/7XS7HLKKCISNH1"
-          target="_blank"
-          rel="noreferrer"
+          href="/"
         >
           <WhatsApp />
         </a>
@@ -275,9 +273,7 @@ export default function Navbar({ bg = false }) {
     {
       icon: (
         <a
-          href="https://www.linkedin.com/in/lukman-obisesan-80ba5a20a"
-          target="_blank"
-          rel="noreferrer"
+          href="/"
         >
           <LinkedIn />
         </a>
@@ -287,9 +283,7 @@ export default function Navbar({ bg = false }) {
     {
       icon: (
         <a
-          href="https://www.facebook.com/bwlservices"
-          target="_blank"
-          rel="noreferrer"
+          href="/"
         >
           <FacebookOutlined />
         </a>
@@ -299,9 +293,7 @@ export default function Navbar({ bg = false }) {
     {
       icon: (
         <a
-          href="https://instagram.com/boblink_worldwide"
-          target="_blank"
-          rel="noreferrer"
+          href="/"
         >
           <Instagram />
         </a>
