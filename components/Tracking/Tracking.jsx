@@ -6,7 +6,7 @@ import JsBarcode from "jsbarcode";
 // import ReactMapBoxGL from "react-mapbox-gl";
 import MapBoxGL from "mapbox-gl";
 // import polyline from "@mapbox/polyline";
-import * as turf from "@turf/turf";
+// import * as turf from "@turf/turf";
 
 export default function Tracking({ data, error }) {
   const mapConRef = useRef(null);
@@ -225,7 +225,7 @@ export default function Tracking({ data, error }) {
               // Number of steps to use in the arc and animation, more steps means
               // a smoother arc and animation, but too many steps will result in a
               // low frame rate
-              let counter = 0;
+              // let counter = 0;
               if (!route.features[0] || !route.features[0].geometry) {
                 console.error("Invalid route data");
                 return setErr("Invalid route data");
