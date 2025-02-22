@@ -28,7 +28,7 @@ export default function Qualities() {
         },
         {
             head: 'Customer Service',
-            txt: "Whether you're new to shipping a vast amount of items or just have a few questions regarding your current cargo, you'll want to know that help is available. Not only will the top logistics companies in NJ be attentive and capable of answering all of your inquiries, but you should never feel like a hassle or a waste of their time.",
+            txt: "Whether you're new to shipping a vast amount of items or just have a few questions regarding your current cargo, you'll want to know that help is available. Not only will the top logistics companies in the States be attentive and capable of answering all of your inquiries, but you should never feel like a hassle or a waste of their time.",
             icon: <SupportAgent sx={{ color: 'rgb(var(--primary-color))', fontSize: 27 }} />
         },
         {

@@ -58,7 +58,7 @@ export default function About() {
                         >
                             We at Qwik Parcel have mastered the act of Logistics over 
                             the years and built a long connection chain of partnership across the globe with our 
-                            remarkable services .  We are offer  Air freight , Sea freight and Land freight services. 
+                            remarkable services. We offer  Air freight , Sea freight and Land freight services. 
                             To ensure proper and adequate delivery of goods and consignments, we deploy sophisticated 
                             and cutting-edge logistics tools. Our primary mission is to keep you happy, therefore you 
                             might call us a one-customer logistics firm with your satisfaction as the ultimate goal. 
