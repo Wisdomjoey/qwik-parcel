@@ -512,11 +512,11 @@ export default function Tracking({ data, error }) {
                     ? formatD(data.shipment.delivery_date)
                     : "---",
                 },
-                { label: "Price", value: data.shipment.price ?? "---" },
+                /*{ label: "Price", value: data.shipment.price ?? "---" },
                 {
                   label: "Payment Method",
                   value: data.shipment.pay_method ?? "---",
-                },
+                },*/
                 { label: "Comment", value: data.shipment.comment ?? "---" },
               ].map((info, ind) => (
                 <div key={ind} className="info__piece">
