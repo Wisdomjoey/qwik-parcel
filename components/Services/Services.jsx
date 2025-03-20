@@ -17,7 +17,7 @@ const service = [
   },
   {
     head: "Haulage Services",
-    cap: "Qwik Parcel's haulage services aims to provide value for money in a rather unsexy element of your business' transport. We have a fleet of our own vehicles and partner with agents on the continent to deliver great value for money for palletized shipping, full and part loads as well as same day delivery.",
+    cap: "Qwik Parcel's haulage services aims to provide value for money in a rather seamless way for your business. We have a fleet of our own vehicles and partner with agents on the continent to deliver great value for money for palletized shipping, full and part loads as well as same day delivery.",
     link: "/services/haulage",
   },
   {

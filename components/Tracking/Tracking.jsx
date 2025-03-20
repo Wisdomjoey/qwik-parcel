@@ -459,7 +459,9 @@ export default function Tracking({ data, error }) {
             </p>
           </div>
 
-          <div className="pkg__image"></div>
+          <div className="pkg__image">
+          <img alt="package" src={data.pkg_image} />
+          </div>
 
           <div className="shipment__info">
             <h2>Shipment Information</h2>
@@ -510,11 +512,11 @@ export default function Tracking({ data, error }) {
                     ? formatD(data.shipment.delivery_date)
                     : "---",
                 },
-                { label: "Price", value: data.shipment.price ?? "---" },
+                /*{ label: "Price", value: data.shipment.price ?? "---" },
                 {
                   label: "Payment Method",
                   value: data.shipment.pay_method ?? "---",
-                },
+                },*/
                 { label: "Comment", value: data.shipment.comment ?? "---" },
               ].map((info, ind) => (
                 <div key={ind} className="info__piece">

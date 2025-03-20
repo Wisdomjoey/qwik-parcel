@@ -18,7 +18,6 @@ import Link from "next/link";
 import {
   Build,
   Close,
-  Collections,
   ConnectingAirports,
   DirectionsBoat,
   DocumentScanner,
@@ -418,17 +417,7 @@ export default function Navbar({ bg = false }) {
                     setDrawer(false);
                   }}
                 >
-                  <Nink href="#gallery">
-                    <Collections sx={{ fontSize: 20 }} />
-                    Gallery
-                  </Nink>
-                </li>
-                <li
-                  onClick={() => {
-                    setDrawer(false);
-                  }}
-                >
-                  <Nink href="#about">
+                  <Nink href="/#about">
                     <Info sx={{ fontSize: 20 }} />
                     About
                   </Nink>
@@ -551,13 +540,7 @@ export default function Navbar({ bg = false }) {
                 </Nink>
               </li>
               <li>
-                <Nink href="#gallery">
-                  Gallery
-                  <span className="change"></span>
-                </Nink>
-              </li>
-              <li>
-                <Nink href="#about">
+                <Nink href="/#about">
                   About
                   <span className="change"></span>
                 </Nink>

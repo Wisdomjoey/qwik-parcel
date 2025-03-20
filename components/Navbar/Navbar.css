@@ -39,7 +39,7 @@
 .links {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
 }
 
@@ -63,7 +63,7 @@
 .links ul {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 20%;
     list-style: none;
 }
