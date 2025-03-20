@@ -6,7 +6,7 @@ export default function Quality({ head, txt, icon }) {
         
         { icon }
         <h3>{ head }</h3>
-        <code>{ txt }</code>
+        <p>{ txt }</p>
 
     </div>
   )

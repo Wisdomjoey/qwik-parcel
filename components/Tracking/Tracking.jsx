@@ -437,16 +437,16 @@ export default function Tracking({ data, error }) {
 
                 <div className="information">
                   <p>
-                    <strong>Name:</strong> {data.shipper.name}
+                    <strong>Name:</strong> {data.receiver.name}
                   </p>
                   <p>
-                    <strong>Email:</strong> {data.shipper.email}
+                    <strong>Email:</strong> {data.receiver.email}
                   </p>
                   <p>
-                    <strong>Phone:</strong> {data.shipper.phone}
+                    <strong>Phone:</strong> {data.receiver.phone}
                   </p>
                   <p>
-                    <strong>Address:</strong> {data.shipper.address}
+                    <strong>Address:</strong> {data.receiver.address}
                   </p>
                 </div>
               </div>
