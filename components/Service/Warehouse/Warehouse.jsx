@@ -1,7 +1,7 @@
 import WH from '../../../assets/images/warehouse.jpg';
 import Container from "../Container/Container";
 
-export default function Haulage() {
+export default function Warehouse() {
     return (
         <div className="warehouse">
 
