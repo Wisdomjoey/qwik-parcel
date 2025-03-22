@@ -38,6 +38,7 @@ import {
   LinkedIn,
   FacebookOutlined,
   Instagram,
+  Warehouse,
 } from "@mui/icons-material";
 
 const StyledMenu = styled((props) => (
@@ -384,6 +385,12 @@ export default function Navbar({ bg = false }) {
                             Haulage Services
                           </MenuItem>
                         </Link>
+                        <Link href="/services/warehouse">
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <Warehouse sx={{ fontSize: 20 }} />
+                            Warehouse Services
+                          </MenuItem>
+                        </Link>
                         <Link href="/services/custom-clearance">
                           <MenuItem onClick={handleClose} disableRipple>
                             <DocumentScanner sx={{ fontSize: 20 }} />
@@ -510,6 +517,12 @@ export default function Navbar({ bg = false }) {
                           Haulage Services
                         </MenuItem>
                       </Link>
+                        <Link href="/services/warehouse">
+                          <MenuItem onClick={handleClose} disableRipple>
+                            <Warehouse sx={{ fontSize: 20 }} />
+                            Warehouse Services
+                          </MenuItem>
+                        </Link>
                       <Link href="/services/custom-clearance">
                         <MenuItem onClick={handleClose} disableRipple>
                           <DocumentScanner />
