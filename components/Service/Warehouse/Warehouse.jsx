@@ -1,4 +1,3 @@
-import "./Warehouse.css";
 import WH from '../../../assets/images/warehouse.jpg';
 import Container from "../Container/Container";
 
