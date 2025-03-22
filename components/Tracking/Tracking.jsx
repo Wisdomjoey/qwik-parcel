@@ -512,7 +512,7 @@ export default function Tracking({ data, error }) {
                     ? formatD(data.shipment.delivery_date)
                     : "---",
                 },
-                { label: "Price", value: data.shipment.price ?? "---" },
+                { label: "Shipping Fee", value: data.shipment.price ?? "---" },
                 {
                   label: "Payment Method",
                   value: data.shipment.pay_method ?? "---",
