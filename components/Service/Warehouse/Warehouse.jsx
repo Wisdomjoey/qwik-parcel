@@ -4,7 +4,7 @@ import Container from "../Container/Container";
 
 export default function Haulage() {
     return (
-        <div className="haulage">
+        <div className="warehouse">
 
             <Container
                 img={ WH }
